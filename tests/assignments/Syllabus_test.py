@@ -1,3 +1,6 @@
+import sys
+sys.path.append(".")
+
 import Syllabus
 
 def answer_question_1_test():

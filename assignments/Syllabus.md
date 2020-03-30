@@ -39,7 +39,7 @@ def question_1(answer):
 You can answer the question by defining an anonymous function. This creates a function that I can test using pytest. You don't have to worry about the details. You just need to answer the question by changing the string argument that is currently set to "D".
 
 ```python
-answer_question_1 = lambda: question_1("D")
+answer_question_1 = lambda: question_1("D") 
 ```
 
 ```python
