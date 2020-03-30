@@ -123,3 +123,10 @@ for line in contents.split("\n"):
 open("$filename.ipynb","w").write("\n".join(lines))
 EOF
 done;
+
+cd ../csc-448-student/
+git add .
+git commit -m "update"
+git push
+
+cd ../csc-466-instructor/
