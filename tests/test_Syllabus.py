@@ -3,5 +3,5 @@ sys.path.append(".")
 
 import Syllabus
 
-def answer_question_1_test():
+def test_answer_question_1():
     assert Syllabus.answer_question_1() == "B"
