@@ -18,10 +18,19 @@
 
 # **Instructions:** This is an individual assignment. Complete the following code and push to get your score.
 
+# I am providing the autograder answers locally so you may test your code before pushing. I will be reviewing your submissions, and if I find you are circumventing the autograder in any manner, you will receive a 0 on this assignment and your case will be reported to the honor board for review. i.e., approach the assignment in a genuine manner and you have nothing to worry about.
+
+import joblib
+answers = joblib.load("answers_Syllabus.joblib")
+
+
 # **Question 1.**
 # When will new material be available each week?
 
-## Do not modify this cell
+# You can answer the question by defining an anonymous function. This creates a function that I can test using pytest. You don't have to worry about the details. You just need to answer the question by changing the string argument that is currently set to "D". I know this is a bit weird, but I want you to get used to submitting code as early as possible.
+
+# +
+# Nothing to modify in this cell
 def question_1(answer):
     answers = {
         "A": "Monday morning",
@@ -29,12 +38,54 @@ def question_1(answer):
         "C": "Monday evening",
         "D": "I don't know"
     }
-    return answers[answer]
-## Do not modify this cell
+    try:
+        return answers[answer]
+    except:
+        return "Not a valid answer"
+
+def test_question_1():
+    assert answer_question_1() == answers['answer_question_1']
 
 
-# You can answer the question by defining an anonymous function. This creates a function that I can test using pytest. You don't have to worry about the details. You just need to answer the question by changing the string argument that is currently set to "D".
+# -
 
-answer_question_1 = lambda: question_1("D") 
+# YOUR SOLUTION HERE
+# Sample incorrect answer
+answer_question_1 = lambda: question_1("Z")
+
+# To test your own function locally (without pushing) you can call
+test_question_1()
+
+
+# **Question 2.**
+# Do I need to buy the textbook?
+
+# +
+# Nothing to modify in this cell
+def question_2(answer):
+    answers = {
+        "A": "No",
+        "B": "Maybe",
+        "C": "Yes. You will struggle with some of the chapters without the textbook",
+    }
+    try:
+        return answers[answer]
+    except:
+        return "Not a valid answer"
+    
+def test_question_2():
+    assert answer_question_2() == answers['answer_question_2']
+
+
+# -
+
+# YOUR SOLUTION HERE
+# Sample incorrect answer
+answer_question_2 = lambda: question_2("Z")
+
+# To test your own function locally (without pushing) you can call
+test_question_2()
+
+# Don't forget to push!
 
 

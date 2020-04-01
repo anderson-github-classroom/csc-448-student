@@ -34,6 +34,24 @@ open("$filename.md","w").write("\n".join(lines))
 EOF
 done;
 
+for file in `find ../$FOLDER/labs/ -name "*.py" -print`; do
+echo $file
+filename="${file%.*}"
+python - <<EOF
+contents = open("$filename.py").read()
+lines = []
+started_solution = False
+for line in contents.split("\n"):
+  if "BEGIN SOLUTION" in line:
+    started_solution = True
+  elif "END SOLUTION" in line:
+    started_solution = False
+  elif started_solution == False:
+    lines.append(line)
+open("$filename.py","w").write("\n".join(lines))
+EOF
+done;
+
 for file in `find ../$FOLDER/labs/ -name "*.md" -print`; do
 echo $file
 filename="${file%.*}"
@@ -88,6 +106,25 @@ open("$filename.ipynb","w").write("\n".join(lines))
 EOF
 done;
 
+for file in `find ../$FOLDER/assignments/ -name "*.py" -print`; do
+echo $file
+filename="${file%.*}"
+python - <<EOF
+contents = open("$filename.py").read()
+lines = []
+started_solution = False
+for line in contents.split("\n"):
+  if "BEGIN SOLUTION" in line:
+    started_solution = True
+  elif "END SOLUTION" in line:
+    started_solution = False
+  elif started_solution == False:
+    lines.append(line)
+open("$filename.py","w").write("\n".join(lines))
+EOF
+done;
+
+
 for file in `find ../$FOLDER/assignments/ -name "*.md" -print`; do
 echo $file
 filename="${file%.*}"
@@ -124,9 +161,9 @@ open("$filename.ipynb","w").write("\n".join(lines))
 EOF
 done;
 
-cd ../csc-448-student/
+CURRENT=`pwd`
+cd ../$FOLDER
 git add .
-git commit -m "update"
+git commit -m update
 git push
-
-cd ../csc-466-instructor/
+cd $CURRENT
