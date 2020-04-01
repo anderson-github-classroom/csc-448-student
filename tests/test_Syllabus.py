@@ -15,3 +15,12 @@ def test_question_1():
     
 def test_question_2():
     assert Syllabus.answer_question_2() == answers['answer_question_2']
+    
+def test_question_3():
+    assert Syllabus.answer_question_3() == answers['answer_question_3']
+    
+def test_question_4():
+    assert Syllabus.answer_question_3() == answers['answer_question_4']
+    
+def test_question_5():
+    assert Syllabus.answer_question_3() == answers['answer_question_5']
