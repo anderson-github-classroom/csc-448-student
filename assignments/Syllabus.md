@@ -46,9 +46,6 @@ def question_1(answer):
         return answers[answer]
     except:
         return "Not a valid answer"
-
-def test_question_1():
-    assert answer_question_1() == answers['answer_question_1']
 ```
 
 ```python
@@ -77,9 +74,6 @@ def question_2(answer):
         return answers[answer]
     except:
         return "Not a valid answer"
-    
-def test_question_2():
-    assert answer_question_2() == answers['answer_question_2']
 ```
 
 ```python

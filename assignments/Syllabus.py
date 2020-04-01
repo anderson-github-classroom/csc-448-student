@@ -29,7 +29,6 @@ answers = joblib.load("answers_Syllabus.joblib")
 
 # You can answer the question by defining an anonymous function. This creates a function that I can test using pytest. You don't have to worry about the details. You just need to answer the question by changing the string argument that is currently set to "D". I know this is a bit weird, but I want you to get used to submitting code as early as possible.
 
-# +
 # Nothing to modify in this cell
 def question_1(answer):
     answers = {
@@ -43,11 +42,6 @@ def question_1(answer):
     except:
         return "Not a valid answer"
 
-def test_question_1():
-    assert answer_question_1() == answers['answer_question_1']
-
-
-# -
 
 # YOUR SOLUTION HERE
 # Sample incorrect answer
@@ -60,7 +54,6 @@ test_question_1()
 # **Question 2.**
 # Do I need to buy the textbook?
 
-# +
 # Nothing to modify in this cell
 def question_2(answer):
     answers = {
@@ -72,12 +65,7 @@ def question_2(answer):
         return answers[answer]
     except:
         return "Not a valid answer"
-    
-def test_question_2():
-    assert answer_question_2() == answers['answer_question_2']
 
-
-# -
 
 # YOUR SOLUTION HERE
 # Sample incorrect answer
