@@ -1,5 +1,5 @@
-#import sys
-#sys.path.append(".")
+import sys
+sys.path.append(".")
 
 # Import the student solutions
 import Syllabus
