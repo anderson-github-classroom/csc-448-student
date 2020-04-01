@@ -20,9 +20,6 @@
 
 # I am providing the autograder answers locally so you may test your code before pushing. I will be reviewing your submissions, and if I find you are circumventing the autograder in any manner, you will receive a 0 on this assignment and your case will be reported to the honor board for review. i.e., approach the assignment in a genuine manner and you have nothing to worry about.
 
-import joblib
-answers = joblib.load("answers_Syllabus.joblib")
-
 
 # **Question 1.**
 # When will new material be available each week?
@@ -47,9 +44,6 @@ def question_1(answer):
 # Sample incorrect answer
 answer_question_1 = lambda: question_1("Z")
 
-# To test your own function locally (without pushing) you can call
-test_question_1()
-
 
 # **Question 2.**
 # Do I need to buy the textbook?
@@ -70,9 +64,6 @@ def question_2(answer):
 # YOUR SOLUTION HERE
 # Sample incorrect answer
 answer_question_2 = lambda: question_2("Z")
-
-# To test your own function locally (without pushing) you can call
-test_question_2()
 
 # Don't forget to push!
 

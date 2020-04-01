@@ -1,11 +1,17 @@
-import sys
-sys.path.append(".")
+#import sys
+#sys.path.append(".")
 
+# Import the student solutions
 import Syllabus
-import answers
 
-def test_answer_question_1():
-    assert Syllabus.answer_question_1() == ANSWERS['csc-448-instructor/tests/test_Syllabus.py::test_answer_question_1']
+import pathlib
+DIR=pathlib.Path(__file__).parent.absolute()
+
+import joblib
+joblib.load(DIR+"/answers_Syllabus.joblib")
+
+def test_question_1():
+    assert answer_question_1() == answers['answer_question_1']
     
-def test_answer_question_2():
-    assert Syllabus.answer_question_2() == ANSWER['csc-448-instructor/tests/test_Syllabus.py::test_answer_question_2']
+def test_question_2():
+    assert answer_question_2() == answers['answer_question_2']
