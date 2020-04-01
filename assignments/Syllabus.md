@@ -75,10 +75,73 @@ def question_2(answer):
 answer_question_2 = lambda: question_2("Z")
 ```
 
+**Question 3.**
+Are these any required times that I be online?
+
 ```python
-# Don't forget to push!
+# Nothing to modify in this cell
+def question_3(answer):
+    answers = {
+        "A": "Yes",
+        "B": "No"
+    }
+    try:
+        return answers[answer]
+    except:
+        return "Not a valid answer"
 ```
 
 ```python
+# YOUR SOLUTION HERE
+# Sample incorrect answer
+answer_question_3 = lambda: question_3("Z")
+```
 
+**Question 4.**
+What software will I use to complete the assignments?
+
+```python
+# Nothing to modify in this cell
+def question_4(answer):
+    answers = {
+        "A": "Java",
+        "B": "Netbeans",
+        "C": "Anaconda"
+    }
+    try:
+        return answers[answer]
+    except:
+        return "Not a valid answer"
+```
+
+```python
+# YOUR SOLUTION HERE
+# Sample incorrect answer
+answer_question_4 = lambda: question_4("Z")
+```
+
+**Question 5.**
+Do I need to participate in this class or can I just do the labs and assignments?
+
+```python
+# Nothing to modify in this cell
+def question_5(answer):
+    answers = {
+        "A": "Yes. If you want to get anything higher than a C, you'll need to do more than the labs and assignments",
+        "B": "No",
+    }
+    try:
+        return answers[answer]
+    except:
+        return "Not a valid answer"
+```
+
+```python
+# YOUR SOLUTION HERE
+# Sample incorrect answer
+answer_question_5 = lambda: question_5("Z")
+```
+
+```python
+# Don't forget to push!
 ```
