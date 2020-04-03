@@ -3,6 +3,7 @@ rm -rf ../$FOLDER/*
 cp -Rp book ../$FOLDER/
 cp -Rp labs ../$FOLDER/
 cp -Rp assignments ../$FOLDER/
+cp -Rp groups ../$FOLDER/
 cp -Rp tests ../$FOLDER/
 cp -Rp config ../$FOLDER/
 cp -Rp lectures ../$FOLDER/
