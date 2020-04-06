@@ -24,7 +24,7 @@ We don't know enough bioinformatics yet, but we can start the project by cleanin
 6. https://covid19.galaxyproject.org/
 
 
-### Link to clone the repo
+### Link to clone the repository
 https://github.com/anderson-github-classroom/csc-448-project
 
 ```python
