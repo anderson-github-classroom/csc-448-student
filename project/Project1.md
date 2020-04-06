@@ -25,7 +25,11 @@ We don't know enough bioinformatics yet, but we can start the project by cleanin
 
 
 ### Link to clone the repository
+Here is a link to the project repository.
+
 https://github.com/anderson-github-classroom/csc-448-project
+
+The website can be viewed at https://anderson-github-classroom.github.io/csc-448-project/.
 
 ```python
 
