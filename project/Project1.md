@@ -22,3 +22,11 @@ We don't know enough bioinformatics yet, but we can start the project by cleanin
 4. https://nextstrain.org/ncov
 5. https://mra.asm.org/content/9/11/e00169-20
 6. https://covid19.galaxyproject.org/
+
+
+### Link to clone the repo
+https://github.com/anderson-github-classroom/csc-448-project
+
+```python
+
+```
