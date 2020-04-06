@@ -1,0 +1,6 @@
+numpy
+jupytext
+matplotlib
+pandas
+pytest
+joblib

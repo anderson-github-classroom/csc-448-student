@@ -1,5 +1,6 @@
 FOLDER=csc-448-student
 rm -rf ../$FOLDER/*
+cp requirements.txt ../$FOLDER/
 cp -Rp book ../$FOLDER/
 cp -Rp labs ../$FOLDER/
 cp -Rp assignments ../$FOLDER/
