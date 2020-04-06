@@ -8,6 +8,7 @@ cp -Rp groups ../$FOLDER/
 cp -Rp tests ../$FOLDER/
 cp -Rp config ../$FOLDER/
 cp -Rp lectures ../$FOLDER/
+cp -Rp project ../$FOLDER/
 cp -Rp data ../$FOLDER/
 cp -Rp exam_study_info ../$FOLDER/
 find ../$FOLDER/ -name ".ipy*" -exec rm -rf {} \;
