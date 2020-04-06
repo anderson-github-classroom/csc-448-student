@@ -1,5 +1,4 @@
 numpy
-jupytext
 matplotlib
 pandas
 pytest
