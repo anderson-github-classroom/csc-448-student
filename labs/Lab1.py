@@ -157,6 +157,16 @@ print(frequent_words("ACAACTATGCATACTATCGGGAACTATCCT",4))
 # C. $k^2$
 
 # + slideshow={"slide_type": "skip"}
+def question_1(answer):
+    answers = {
+        "A": False,
+        "B": True,
+        "C": False
+    }
+    try:
+        return answers[answer]
+    except:
+        return "Not a valid answer"
 # YOUR SOLUTION HERE
 # Sample incorrect answer
 answer_question_1 = lambda: question_1("Z")
