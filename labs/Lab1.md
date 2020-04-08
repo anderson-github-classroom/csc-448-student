@@ -251,7 +251,7 @@ What is interesting about the reverse complement of the first 9-mer?
 def frequency_table(text,k):
     freq_map = {}
     n = len(text)
-    for i in range(n-k):
+    for i in range(n-k+1):
     return freq_map
 ```
 

@@ -227,7 +227,7 @@ print("Reverse complement of first 9-mer:",reverse_complement(solutions[0][0]))
 def frequency_table(text,k):
     freq_map = {}
     n = len(text)
-    for i in range(n-k):
+    for i in range(n-k+1):
     return freq_map
 
 
