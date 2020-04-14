@@ -29,7 +29,7 @@ def test_exercise_2():
     assert Lab2.limb(Lab2.Dorig,"v4") == answers['answer_exercise_2']
 
 def test_exercise_3a():
-    assert Lab2.find(Lab2.Dorig,"v4") == answers['answer_exercise_3a']
+    assert Lab2.find(D,"v4") == answers['answer_exercise_3a']
     
 def test_exercise_3b():
     assert np.all(nx.adjacency_matrix(Lab2.base_case(Lab2.Dorig.iloc[:2,:].iloc[:,:2])).todense() == answers['answer_exercise_3b'])
