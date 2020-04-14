@@ -13,7 +13,7 @@ answers = joblib.load(str(DIR)+"/answers_Lab2.joblib")
 import networkx as nx
 
 def test_exercise_1():
-    assert (Lab2.compute_d(Lab2.G) == answers['answer_exercise_1']).all()
+    assert (Lab2.compute_d(Lab2.G) == answers['answer_exercise_1']).all().all()
 
 def test_exercise_2():
     assert Lab2.limb(Lab2.Dorig,"v4") == answers['answer_exercise_2']
