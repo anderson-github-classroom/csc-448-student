@@ -21,6 +21,9 @@ Material and embedded lab.
 Motivation and some exercises are variations on those available in Bioinformatics Algorithms: An Active-Learning Approach by Phillip Compeau & Pavel Pevzner.
 <!-- #endregion -->
 
+```python slideshow={"slide_type": "skip"}
+```
+
 <!-- #region slideshow={"slide_type": "slide"} -->
 # Fastest Outbreak?
 <!-- #endregion -->
@@ -83,333 +86,346 @@ Each of these questions about SARS is ultimately related to the problem of const
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "slide"} -->
-## Why should I care?
-There are molecular copy machines known as DNA polymerases that start by locating a *ori*. Some gene therapy methods use genetically engineered mini-genomes, which are called **viral vectors** because they are able to penetrate cell walls. Viral vectors carry artificial genes that have been used to engineer frost-resistant tomatoes and pesticide-resistant corn. In 1990, gene therapy was successfully performed on humans when it saved the life of a four year old girl suffered from Severe Combined Immunodeficiency Disorder. To ensure the treatment works, scientists must know the location of *ori* and avoid disrupting this site.
+# Distance Matrices to Evolutionary Trees
+* Scientists started sequencing cornonavirus from various species to determine which is most similar to SARS
+* Comparing (multiple alignment) of entire viral genomes is tricky because viral genes are often rearranged, inserted, and deleted
+* Scientists focused on one of six genes in SARS-CoV
+* Gene that encodes Spike protein
+    * Identifies and binds to receptor site on host's cell membrane
+    * Spike protein is 1,255 amino acids long and rather weak similarity with Spike proteins in other coronaviruses
+    * Even subltle similarities turned out to be ssufficient for constructing a multiple alignment (comparison) across coronaviruses
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-## Looking for *ori*
-Verified *ori* of Vibrio cholerae, the bacterium that causes cholera (~500 nucleotides):
-<pre>
-atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaac
-ctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgacca
-cggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgactt
-gtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggatt
-acgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttagga
-tagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaat
-tgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaag
-atcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtt
-tccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc
-</pre>
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Amino acids
+<img src="https://www.nature.com/scitable/content/ne0000/ne0000/ne0000/ne0000/7447898/EssGen1-5_Codons-to-AA-V2.jpg">
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-## DnaA box
-* There is a hidden message in *ori* that orders the cell to begin replication here.
-* We know that the initiation of replication is mediated by a protein called **DnaA** that looks for a short segment within *ori*.
-* This short segment is known as a *DnaA box*
-* Biologists want to find this hidden message, but is that clearly defined enough for us CS/STAT/MATH/EGR folks?
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Amino acids continued
+
+<img src="https://www.nature.com/scitable/content/ne0000/ne0000/ne0000/ne0000/118090962/amino-acid-table.jpg">
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-## Counting words
-* Turns out that the patterns in our DNA are not random. 
-* Some patterns are more common than others. 
-* Biologically speaking this helps because certain protins can only bind to DNA if a specific string of nucleotides is present and if that string is more prevelant then we have a greater chance of success (and less likely a mutation will cause problems). 
-* We are going to refer to a *k*-mer as a string of length *k*.
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Amino acids continued
+<img src="https://ib.bioninja.com.au/_Media/amino-acid-structures_med.jpeg" width=500>
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Why? Why? Why?
-"Nothing in biology makes sense except in the light of evolution." - Theodosius Dobzhansky
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Distance matrix
+Consider the DNA sequences shown below for 4 different species. 
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/mammal_alignment_distance_matrix.png" width=400>
+The above example defined a distance matrix of +1 for every mismatched position. In general, $D$ must satisfy three properties. It must be symmetric (for all $i$ and $j$, $D_{i,j}$ = $D_{j,i}$), non-negative (for all $i$ and $j$, $D_{i,j}$ $\ge$ 0) and satisfy the triangle inequality (for all $i$, $j$, and $k$, $D_{i,j} + D_{j,k} \ge D_{i,k}$ ).
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-We are looking for surprisingly frequent substrings (contiguous strings appearing within) this *ori*.
-<pre>
-atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaac
-ctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgacca
-cggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgactt
-gtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggatt
-acgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttagga
-tagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaat
-tgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaag
-atcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtt
-tccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc
-</pre>
-Are there any substrings that occur more frequent than others?
-
-Before we go about searching for unknown substrings, we'll write a function that counts the number of occurances of a specific substring.
+<!-- #region slideshow={"slide_type": "subslide"} -->
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/tree_of_life.png" width=400>
 <!-- #endregion -->
 
-```python slideshow={"slide_type": "skip"}
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Rooted trees
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/rooted_tree_time.png" width=400>
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## What are we aiming for?
+We say that a weighted unooted tree $T$ fits a distance matrix $D$ if $d_{i,j}=D_{i,j}$ for every pair of leaves $i$ and $j$. Example:
+
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/additive_distance_matrix.png" width=300>
+
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/simple_tree_fitting_additive_matrix.png" width=300>
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+### Technical Detour: networkx
+``networkx`` is a very useful Python package. It provides a great visualization for many different applications. While there are phylogentic libraries we will use later, for our project.
+<!-- #endregion -->
+
+```python slideshow={"slide_type": "subslide"}
+%matplotlib inline 
+
+import networkx as nx
+
+G = nx.Graph()
+
+G.add_edge('v1', 'v5', weight=11)
+G.add_edge('v2', 'v5', weight=2)
+G.add_edge('v5', 'v6', weight=4)
+G.add_edge('v6', 'v3', weight=6)
+G.add_edge('v6', 'v4', weight=7)
 ```
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-**Exercise 1.**
-A *k*-mer is a string of length ``k``. For this exercise, define a function ``count(text, pattern)`` as the number of times that a k-mer ``pattern`` appears as a substring of ``text``. For example,
+```python slideshow={"slide_type": "subslide"}
+import copy
+import pandas as pd
 
-For example:
-<pre>
-count("ACAACTATGCATACTATCGGGAACTATCCT","ACTAT")=3.
-</pre>
-Please note that count("CGATATATCCATAG", "ATA") is equal to 3 (not 2) since we should account for overlapping occurrences of ``pattern`` in ``text``.
+def show(T):
+    T = copy.deepcopy(T)
+    labels = nx.get_edge_attributes(T,'weight')
+    max_value = 0
+    for n1,n2 in T.edges():
+        if T[n1][n2]['weight'] > max_value:
+            max_value = T[n1][n2]['weight']
+    for n1,n2 in T.edges():
+        T[n1][n2]['weight']=max_value - T[n1][n2]['weight'] + 3
+    pos=nx.spring_layout(T)
+    nx.draw(T,pos,with_labels=True)
+    nx.draw_networkx_edge_labels(T,pos,edge_labels=labels);
+    
+def show_adj(T):
+    return pd.DataFrame(nx.adjacency_matrix(T).todense(),index=T.nodes(),columns=T.nodes())
+```
+
+```python slideshow={"slide_type": "subslide"}
+show(G)
+```
+
+```python slideshow={"slide_type": "subslide"}
+show_adj(G)
+```
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Pandas and numpy
+Throughout this course, I will use numpy and Pandas when I find their use worth the complexity of you learning another library. Fortunately, there are some really simple Pandas and numpy features that we can easily discuss. For this lab, our primary use will be the use of a pandas dataframe. If we didn't use pandas, and we wanted to access a 2-dimensional array, then we would have to do the following:
 <!-- #endregion -->
 
 ```python slideshow={"slide_type": "fragment"}
-def count(text,pattern):
-    count = 0
-    # YOUR SOLUTION HERE
-    return count
+D = [[0,13,21,22],[13,0,12,13],[21,12,0,13],[22,13,13,0]]
+D
 ```
 
-```python slideshow={"slide_type": "skip"}
-count("ACAACTATGCATACTATCGGGAACTATCCT","ACTAT")
+<!-- #region slideshow={"slide_type": "subslide"} -->
+This isn't bad, but it gets clunky. 
+* We don't have any names associated with the columns or rows.
+* We don't have an easy way to access a specific column.
+* And much more...
+<!-- #endregion -->
+
+```python slideshow={"slide_type": "fragment"}
+import pandas as pd
+names = ["v1","v2","v3","v4"]
+D = pd.DataFrame([[0,13,21,22],[13,0,12,13],[21,12,0,13],[22,13,13,0]],index=names,columns=names)
+D
 ```
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-### A word about embedded lab questions
-In general, I will skip over most lab questions when recording and presenting unless I want them to be used as part of the lecture/discussion.
+<!-- #region slideshow={"slide_type": "subslide"} -->
+**Accessing an element by row and column name**
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "skip"} -->
-**Exercise 2.** Find the most frequent *k*-mers in a string.
-* Input: A string ``text`` and an integer ``k``.
-* Output: All most frequent *k*-mers in ``text`` and their count.
-* Requirements: Do not use a dictionary/map
+```python slideshow={"slide_type": "fragment"}
+D.loc["v2","v3"] # Pretty cool right?
+```
+
+```python slideshow={"slide_type": "fragment"}
+D.iloc[1,2] # You can always go back to regular indices
+```
+
+```python slideshow={"slide_type": "fragment"}
+D.columns # You can easily get the column names
+```
+
+```python slideshow={"slide_type": "fragment"}
+D.index # You can easily get the row names
+```
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Neighboring leaves
+<center>
+${\color{red}{d_{k,m}}} = \dfrac{({\color{purple}{d_{i,m}}} + {\color{red}{d_{k,m}}}) + ({\color{blue}{d_{j,m}}} + {\color{red}{d_{k,m}}}) - ({\color{purple}{d_{i,m}}} + {\color{blue}{d_{j,m}}})}{2} = \dfrac{d_{i,k} +d_{j,k} - d_{i,j}}{2}$
+
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/neighboring_leaves_equality.png" width=500>
+</center>
 <!-- #endregion -->
 
-```python slideshow={"slide_type": "skip"}
+<!-- #region slideshow={"slide_type": "subslide"} -->
+**Exercise 1** Compute the distances between leaves in a weighted tree
+
+Input: A weighted tree defined by the package networkx
+
+Output: $n \times n$ matrix ($d_{i,j}$), where $d_{i,j}$ is the length of the path between leaves $i$ and $j$.
+
+Learning objectives:
+1. Refresh memory of graph traversal (path finding)
+2. Understand the difference between $d_{i,j}$ and $D_{i,j}$.
+3. Gain exposure and work with networkx python package.
+<!-- #endregion -->
+
+```python slideshow={"slide_type": "subslide"}
+import pandas as pd
+
+def compute_d(G):
+    d = {}
+    for nodei in G.nodes():
+        for nodej in G.nodes():
+            d[nodei,nodej] = 0
+    # Fill in all adjacent values
+    for nodei,nodej,data in G.edges(data=True):
+        d[nodei,nodej] = data['weight']
+        d[nodej,nodei] = d[nodei,nodej]
+    for nodei in G.nodes():
+        for nodej in G.nodes():
+            if d[nodei,nodej] == 0 and nodei != nodej:
+                dij = 0
+                ## YOUR SOLUTION HERE
+                # networkx has a function to compute simple paths. You can uncomment out the line
+                # below in order to see this function working. I'll be reviewing your solutions though
+                # and if you don't write this from scratch, then I will consider this an attempt to
+                # circumvent the autograder
+                #path = list(nx.all_simple_paths(G,nodei,nodej))[0] # get the first simple path
+                a = path[0]
+                for b in path[1:]:
+                    dij += d[a,b]
+                    a = b
+                d[nodei,nodej] = dij
+                d[nodej,nodei] = dij
+    d = pd.DataFrame(d.values(),index=d.keys(),columns=['d']).unstack()
+    d.columns = [n for l,n in d.columns]
+    return d
+
+compute_d(G)
+```
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## What if you need to find the graph?
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/additive_phylogeny.png" width=450>
+<!-- #endregion -->
+
+<!-- #region slideshow={"slide_type": "subslide"} -->
+**Exercise 2** Implement limb length algorightm described in Chapter 7.
+
+Input: An addititve distance matrix $D$ and a node $j$
+
+Output: The length of the limb connect leaf $j$ to its parent in $Tree(D)$.
+
+Learning outcomes:
+1. Understanding why this function is needed when we just computed the paths weights previously.
+2. Understanding the Limb Length Theorem in Chapter 7.
+<!-- #endregion -->
+
+```python slideshow={"slide_type": "subslide"}
+import pandas as pd
 import numpy as np
 
-def frequent_words(text,k):
-    frequent_patterns = []
-    counts = []
-    return list(np.unique(frequent_patterns)),max_count
+def limb(D,j):
+    min_length = np.Inf
+    nodes = D.drop(j).index
+    for ix,i in enumerate(nodes):
+        for kx in range(ix+1,len(nodes)):
+            k = nodes[kx]
+    return min_length
+
+names = ["v1","v2","v3","v4"]
+D = pd.DataFrame([[0,13,21,22],[13,0,12,13],[21,12,0,13],[22,13,13,0]],index=names,columns=names)
+display(D)
+limb(D,"v4")
+
 ```
 
-```python slideshow={"slide_type": "skip"}
-print(frequent_words("ACAACTATGCATACTATCGGGAACTATCCT",5))
-print(frequent_words("ACAACTATGCATACTATCGGGAACTATCCT",4))
-```
+<!-- #region slideshow={"slide_type": "subslide"} -->
+## Building up additive phylogeny
+One piece at a time...
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-**Question 1.**
-What is the Big-O of frequent words? Define $|text|$ as the length of text. Assume the unit of measurement is comparing a single charater (i.e., comparing ABC to DEF costs 3 units).
+Learning outcomes:
+1. Using recursion and by extension debugging recursion
+2. Understand additive versus non-additive $D$
+3. Constructing our first evolutionary tree
+<!-- #endregion -->
 
-A. $|\mbox{text}|^2$
+<!-- #region slideshow={"slide_type": "subslide"} -->
+**Exercise 3a** Implement a portion of ``AdditivePhylogeny`` algorithm from Chapter 7.
 
-B. $|\mbox{text}|^2*k$
- 
-C. $k^2$
+Input: Distance matrix $D$ and node name $n$.
+
+Output: Return the node names $i,k$ that satisfy $D_{i,k} = D_{i,n} + D_{n,k}$.
 <!-- #endregion -->
 
 ```python slideshow={"slide_type": "skip"}
-def question_1(answer):
-    answers = {
-        "A": False,
-        "B": True,
-        "C": False
-    }
-    try:
-        return answers[answer]
-    except:
-        return "Not a valid answer"
-# YOUR SOLUTION HERE
-# Sample incorrect answer
-answer_question_1 = lambda: question_1("Z")
-answer_question_1()
+Dorig = copy.copy(D)
 ```
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Now let's look at the *ori* and see what 9-mers appear
-<!-- #endregion -->
+```python slideshow={"slide_type": "subslide"}
+def find(D,n):
+    nodes = D.drop(n).index
+    for ix,i in enumerate(nodes):
+        for kx in range(ix+1,len(nodes)):
 
-```python slideshow={"slide_type": "fragment"}
-text = "atcaatgatcaacgtaagcttctaagcatgatcaaggtgctcacacagtttatccacaacctgagtggatgacatcaagataggtcgttgtatctccttcctctcgtactctcatgaccacggaaagatgatcaagagaggatgatttcttggccatatcgcaatgaatacttgtgacttgtgcttccaattgacatcttcagcgccatattgcgctggccaaggtgacggagcgggattacgaaagcatgatcatggctgttgttctgtttatcttgttttgactgagacttgttaggatagacggtttttcatcactgactagccaaagccttactctgcctgacatcgaccgtaaattgataatgaatttacatgcttccgcgacgatttacctcttgatcatcgatccgattgaagatcttcaattgttaattctcttgcctcgactcatagccatgatgagctcttgatcatgtttccttaaccctctattttttacggaagaatgatcaagctgctgctcttgatcatcgtttc"
-frequent_words(text,9)
+D = copy.copy(Dorig)
+display(D)
+limbLength = limb(D,D.index[-1]) # our algorithm will choose the last node
+n = D.index[-1]
+Dtrimmed = D.drop(n).drop(n,axis=1)
+for j in Dtrimmed.index:
+    D.loc[j,n] = D.loc[j,n] - limbLength
+    D.loc[n,j] = D.loc[j,n]
+find(D,"v4")
 ```
 
-<!-- #region slideshow={"slide_type": "fragment"} -->
-Notice anything interesting about the sequences?
-<!-- #endregion -->
+**Exercise 3b** Implement a portion of ``AdditivePhylogeny`` algorithm from Chapter 7.
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-As previously stated, nucleotides only bind to their complement, so A and T bind and G and C bind. It is also true that DNA is read in specific direction. Very much in the same way we read left to right. DNA is read from what is called the 5' end to the 3' end.
+Input: Distance matrix $D$ of size $2 \times 2$.
 
-<img src="https://image.slidesharecdn.com/dna-replication-lin-140210083429-phpapp02/95/dna-replicationlin-4-638.jpg?cb=1392021295" width=400/>
+Output: Return a networkx graph with the correct weight.
 
-So we can now understand and look for something very important called a reverse complement. The definition of which is right there in the name. ACTG is the reverse complement of CAGT. Let's now write a simple funciton to find the reverse complement.
-<!-- #endregion -->
+```python
+def base_case(D):
+    T = nx.Graph()
+    ## YOUR SOLUTION HERE
+    return T
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-**Exercise 3.** Write a function that find the reverse complement of a DNA sequence.
-* Input: A string ``text`` representing DNA.
-* Output: The reverse complement of ``text``.
-<!-- #endregion -->
-
-```python slideshow={"slide_type": "fragment"}
-def reverse_complement(text):
-    text = text[::-1].lower()
-    chars = []
-    return "".join(chars)
+base_G = base_case(D.iloc[:2,:].iloc[:,:2])
+show(base_G)
 ```
 
-```python slideshow={"slide_type": "skip"}
-reverse_complement("cagt")
+```python slideshow={"slide_type": "subslide"}
+def additive_phylogeny(D,new_number):
+    D = D.copy()
+    if len(D) == 2:
+        return base_case(D) # Implemented correctly above
+    n = D.index[-1]
+    limbLength = limb(D,n) # our algorithm will choose the last node
+    Dtrimmed = D.drop(n).drop(n,axis=1)
+    for j in Dtrimmed.index:
+        D.loc[j,n] = D.loc[j,n] - limbLength
+        D.loc[n,j] = D.loc[j,n]
+
+    i,k = find(D,n) # Implemented correctly above
+    x = D.loc[i,n]
+    Dtrimmed = D.drop(n).drop(n,axis=1)
+    T = additive_phylogeny(Dtrimmed,new_number+1)
+    
+    weight = D.loc[i,k]
+    v = "v%s"%new_number
+    # find out what node k is actually attached to
+    real_i = list(set(list(T.edges(k))[0]) - set([k]))[0]
+    ## Your solution here
+    # This is definitely the most complicated thing conceptually
+    # You'll need to add edges and remove edges (T.add_edge and T.remove_edge)
+    return T
+
+D = copy.copy(Dorig)
+G2 = additive_phylogeny(D,len(D)+1)
+show(G2)
 ```
 
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Back to our 9-mers
+<!-- #region slideshow={"slide_type": "subslide"} -->
+**Exercise 4 (not for points)** Run your new algorithm on SARS data derived from multiple alignment of Spike proteins.
 <!-- #endregion -->
 
-```python slideshow={"slide_type": "fragment"}
-solutions = frequent_words(text,9)
-print(solutions)
-print("Reverse complement of first 9-mer:",reverse_complement(solutions[0][0]))
+```python slideshow={"slide_type": "subslide"}
+D_sars = pd.read_csv('../data/coronavirus_distance_matrix_additive.txt',index_col=0)
+D_sars
 ```
 
-<!-- #region slideshow={"slide_type": "fragment"} -->
-What is interesting about the reverse complement of the first 9-mer?
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Writing faster code
-**Exercise 4.** Let's now write faster code that produces a frequency map. 
-* Input: A string ``text`` representing DNA and integer ``k``.
-* Output: a frequency map (Python dictionary) that maps every pattern of size ``k`` to the number of times that pattern occurs.
-<!-- #endregion -->
-
-```python slideshow={"slide_type": "fragment"}
-def frequency_table(text,k):
-    freq_map = {}
-    n = len(text)
-    for i in range(n-k+1):
-    return freq_map
-```
-
-```python slideshow={"slide_type": "skip"}
-freq_map = frequency_table(text,3)
-```
-
-```python slideshow={"slide_type": "slide"}
-# I'm only using pandas here so the output is reasonable, you can remove it of course and see the full dictionary
-import pandas as pd
-pd.Series(frequency_table(text,3))
-```
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Write better frequent words
-**Exercise 5.** Write a function that finds the frequent patterns using a dictionary/map. 
-* Input: A string ``text`` representing DNA and integer ``k``.
-* Output: All most frequent *k*-mers in ``text`` and their count.
-* Requirements: Use your frequency_table function (i.e., use the dictionary).
-<!-- #endregion -->
-
-```python slideshow={"slide_type": "fragment"}
-def better_frequent_words(text,k):
-    frequent_patterns = []
-    freq_map = frequency_table(text,k)
-    return frequent_patterns,max_value
+```python slideshow={"slide_type": "subslide"}
+G3 = additive_phylogeny(D_sars,len(D_sars)+1)
+show(G3)
 ```
 
 ```python slideshow={"slide_type": "skip"}
-better_frequent_words(text,9)
-```
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Clump Finding Problem
-* Please read the section in the texbook on the clump finding problem
-* Even if we solve the clump finding problem, we still have an issue
-* Specifically, for the *E. coli* genome we find hundreds of different 9-mers forming (500,3)-clumps
-* This makes it absolutely unclear which of these 9-mers might represent a DnaA box in the bacterium’s *ori* region.
-* Please read the next sections entitled "The Simplest Way to Replicate DNA" and "Asymmetry of Replication". Take a stab at the biology. Chat with me in Slack about what you find confusing and interesting. We don't have exams and the details of biochemistry at this point aren't as important. 
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Statistics of the Foward and Reverse Half-Strands
-* The most important consequent for us from the discussion of DNA replication is that we now have four pieces
-    1. Forward half-strand x 2
-    2. Reverse half-strand x 2
-
-<img src="http://bioinformaticsalgorithms.com/images/Replication/half_strands.png" width=400>
-
-
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Why does this matter?
-Consider the genome of *Thermotoga petrophila*. If we count the nucleotides in the forward and reverse half strands, then we get the following:
-
-<img src="http://bioinformaticsalgorithms.com/images/Replication/forward_reverse_nucleotide_counts.png" width=400>
-
-Notice that the number of C's and G's is different in the reverse and forward half-strand. Why is this?
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-"It turns out that we observe these discrepancies because cytosine (C) has a tendency to mutate into thymine (T) through a process called deamination. Deamination rates rise 100-fold when DNA is single-stranded, which leads to a decrease in cytosine on the forward half-strand. Also, since C-G base pairs eventually change into T-A base pairs, deamination results in the observed decrease in guanine (G) on the reverse half-strand (recall that a forward parent half-strand synthesizes a reverse daughter half-strand, and vice-versa)." - Bioinformatics Algorithms 3rd Edition
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Minimum skew problem
-We can use this statistic to find the *ori*. We need to define We define $Skew_i(Genome)$ as the difference between the total number of occurrences of G and the total number of occurrences of C in the first $i$ nucleotides of Genome. 
-
-Note that we can compute $Skew_i(Genome)$ incrementally.  If the next nucleotide is G, then $Skew_{i+1}(Genome)$ = $Skew_i(Genome)$ + 1; if this nucleotide is C, then $Skew_{i+1}(Genome)$ = $Skew_i(Genome)$ – 1; otherwise, $Skew_{i+1}(Genome)$ = $Skew_i(Genome)$.
-<!-- #endregion -->
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-**Exercise 6:** Compute the skew at every position of a Genome
-
-Input: A DNA string Genome.
-
-Output: An array that computes the $Skew_i(Genome)$. You can assume $Skew_0(Genome)$=0
-<!-- #endregion -->
-
-```python slideshow={"slide_type": "fragment"}
-def skew(genome):
-    skews = [0]
-    return skews
-```
-
-<!-- #region slideshow={"slide_type": "slide"} -->
-### Reading in the *E coli* genome
-I'll do this for you.
-<!-- #endregion -->
-
-```python slideshow={"slide_type": "fragment"}
-import pandas as pd
-data = pd.read_table("http://bioinformaticsalgorithms.com/data/realdatasets/Rearrangements/E_coli.txt",header=None)
-genome = data.values[0,0]
-```
-
-```python slideshow={"slide_type": "skip"}
-skews = skew(genome)
-```
-
-```python slideshow={"slide_type": "skip"}
-# Again I'm using pandas because the display would be horrible otherwise.
-# I will either give you the pandas code or teach you that pandas/numpy code
-skews = pd.Series(skew(genome))
-skews
-```
-
-```python slideshow={"slide_type": "slide"}
-%matplotlib inline
-skews.plot.line()
-```
-
-<!-- #region slideshow={"slide_type": "fragment"} -->
-Where do you think the *ori* is located?
-<!-- #endregion -->
-
-```python slideshow={"slide_type": "fragment"}
-print('Position:',skews.idxmin()+1)
+show_adj(G3)
 ```
 
 ```python slideshow={"slide_type": "skip"}
 # Don't forget to push!
-```
-
-```python
-
 ```
