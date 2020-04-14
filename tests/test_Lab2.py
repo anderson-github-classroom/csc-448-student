@@ -12,6 +12,7 @@ answers = joblib.load(str(DIR)+"/answers_Lab2.joblib")
 
 import networkx as nx
 import numpy as np
+import copy
 
 D = copy.copy(Lab2.Dorig)
 limbLength = Lab2.limb(D,D.index[-1]) # our algorithm will choose the last node
