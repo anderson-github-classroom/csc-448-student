@@ -13,6 +13,14 @@ answers = joblib.load(str(DIR)+"/answers_Lab2.joblib")
 import networkx as nx
 import numpy as np
 
+D = copy.copy(Lab2.Dorig)
+limbLength = Lab2.limb(D,D.index[-1]) # our algorithm will choose the last node
+n = D.index[-1]
+Dtrimmed = D.drop(n).drop(n,axis=1)
+for j in Dtrimmed.index:
+    D.loc[j,n] = D.loc[j,n] - limbLength
+    D.loc[n,j] = D.loc[j,n]
+
 def test_exercise_1():
     assert (Lab2.compute_d(Lab2.G) == answers['answer_exercise_1']).all().all()
 
