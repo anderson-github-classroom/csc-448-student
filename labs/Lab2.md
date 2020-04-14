@@ -429,3 +429,7 @@ show_adj(G3)
 ```python slideshow={"slide_type": "skip"}
 # Don't forget to push!
 ```
+
+```python
+
+```

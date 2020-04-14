@@ -388,3 +388,6 @@ show_adj(G3)
 
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!
+# -
+
+
