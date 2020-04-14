@@ -283,7 +283,7 @@ def limb(D,j):
 
 names = ["v1","v2","v3","v4"]
 D = pd.DataFrame([[0,13,21,22],[13,0,12,13],[21,12,0,13],[22,13,13,0]],index=names,columns=names)
-display(D)
+print(D)
 limb(D,"v4")
 
 
@@ -314,7 +314,7 @@ def find(D,n):
         for kx in range(ix+1,len(nodes)):
 
 D = copy.copy(Dorig)
-display(D)
+print(D)
 limbLength = limb(D,D.index[-1]) # our algorithm will choose the last node
 n = D.index[-1]
 Dtrimmed = D.drop(n).drop(n,axis=1)
