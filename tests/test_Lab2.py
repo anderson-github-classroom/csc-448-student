@@ -11,6 +11,7 @@ import joblib
 answers = joblib.load(str(DIR)+"/answers_Lab2.joblib")
 
 import networkx as nx
+import numpy as np
 
 def test_exercise_1():
     assert (Lab2.compute_d(Lab2.G) == answers['answer_exercise_1']).all().all()
