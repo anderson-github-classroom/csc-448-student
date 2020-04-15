@@ -4,3 +4,4 @@ pandas
 pytest
 joblib
 networkx
+scipy
