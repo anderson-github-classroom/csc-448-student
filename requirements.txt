@@ -1,6 +1,0 @@
-numpy
-matplotlib
-pandas
-pytest
-joblib
-networkx
