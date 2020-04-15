@@ -394,7 +394,10 @@ def additive_phylogeny(D,new_number):
     Dtrimmed = D.drop(n).drop(n,axis=1)
     T = additive_phylogeny(Dtrimmed,new_number+1)
     
+    #i_,k_,ddict2 = list(T.edges((i,k),data=True))[0]
+    #old_weight2 = ddict2['weight']
     weight = D.loc[i,k]
+    #print(weight,old_weight2)
     v = "v%s"%new_number
     # find out what node k is actually attached to
     real_i = list(set(list(T.edges(k))[0]) - set([k]))[0]
@@ -418,6 +421,9 @@ D_sars
 ```
 
 ```python slideshow={"slide_type": "subslide"}
+from pylab import rcParams
+rcParams['figure.figsize'] = 10, 5
+
 G3 = additive_phylogeny(D_sars,len(D_sars)+1)
 show(G3)
 ```
