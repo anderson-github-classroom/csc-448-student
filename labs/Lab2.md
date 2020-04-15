@@ -389,18 +389,13 @@ def additive_phylogeny(D,new_number):
         D.loc[j,n] = D.loc[j,n] - limbLength
         D.loc[n,j] = D.loc[j,n]
 
-    i,k = find(D,n) # Implemented correctly above
-    x = D.loc[i,n]
     Dtrimmed = D.drop(n).drop(n,axis=1)
     T = additive_phylogeny(Dtrimmed,new_number+1)
-    
-    #i_,k_,ddict2 = list(T.edges((i,k),data=True))[0]
-    #old_weight2 = ddict2['weight']
-    weight = D.loc[i,k]
-    #print(weight,old_weight2)
+
+    i,k = find(D,n) # Implemented correctly above
+    #if D.loc[j,n] < D.loc[i,n]:
+    #    i,k = k,i
     v = "v%s"%new_number
-    # find out what node k is actually attached to
-    real_i = list(set(list(T.edges(k))[0]) - set([k]))[0]
     ## Your solution here
     # This is definitely the most complicated thing conceptually
     # You'll need to add edges and remove edges (T.add_edge and T.remove_edge)
@@ -409,6 +404,10 @@ def additive_phylogeny(D,new_number):
 D = copy.copy(Dorig)
 G2 = additive_phylogeny(D,len(D)+1)
 show(G2)
+```
+
+```python
+D
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
@@ -430,6 +429,24 @@ show(G3)
 
 ```python slideshow={"slide_type": "skip"}
 show_adj(G3)
+```
+
+```python
+def compute_path_cost(T,i,k):
+    cost = 0
+    path = list(nx.all_simple_paths(T,i,k))[0]
+    print(path)
+    a = path[0]
+    cost = 0
+    A = show_adj(G3)
+    for b in path[1:]:
+        cost += A.loc[a,b]
+        a = b
+    return cost
+```
+
+```python
+compute_path_cost(G3,'Human','Turkey')
 ```
 
 ```python slideshow={"slide_type": "skip"}
