@@ -35,6 +35,9 @@ def test_exercise_3a():
 def test_exercise_3b():
     assert np.all(nx.adjacency_matrix(Lab2.base_case(Lab2.Dorig.iloc[:2,:].iloc[:,:2])).todense() == answers['answer_exercise_3b'])
     
+def test_exercise_3c():
+    assert np.all(nx.adjacency_matrix(Lab2.additive_phylogeny(Lab2.Dorig,len(Lab2.Dorig)+1)).todense() == answers['answer_exercise_3c'])
+
 def test_exercise_4():
     assert np.all(nx.adjacency_matrix(Lab2.additive_phylogeny(Lab2.D_sars,len(Lab2.D_sars)+1)).todense() == answers['answer_exercise_4'])
     
