@@ -369,12 +369,11 @@ def additive_phylogeny(D,new_number):
 D = copy.copy(Dorig)
 G2 = additive_phylogeny(D,len(D)+1)
 show(G2)
-# -
-
-D
 
 # + [markdown] slideshow={"slide_type": "subslide"}
-# **Exercise 4 (not for points)** Run your new algorithm on SARS data derived from multiple alignment of Spike proteins.
+# **Exercise 4 (extra credit)** Run your new algorithm on SARS data derived from multiple alignment of Spike proteins.
+#
+# This will show up on the grader as incorrect, but I will make it extra credit when moving the grades into Canvas.
 
 # + slideshow={"slide_type": "subslide"}
 D_sars = pd.read_csv('../data/coronavirus_distance_matrix_additive.txt',index_col=0)
@@ -391,12 +390,13 @@ show(G3)
 show_adj(G3)
 
 
-# -
+# + [markdown] slideshow={"slide_type": "skip"}
+# **Helper function to check things out**
 
+# + slideshow={"slide_type": "skip"}
 def compute_path_cost(T,i,k):
     cost = 0
     path = list(nx.all_simple_paths(T,i,k))[0]
-    print(path)
     a = path[0]
     cost = 0
     A = show_adj(G3)
@@ -406,7 +406,11 @@ def compute_path_cost(T,i,k):
     return cost
 
 
+# + slideshow={"slide_type": "skip"}
 compute_path_cost(G3,'Human','Turkey')
+
+# + slideshow={"slide_type": "fragment"}
+compute_path_cost(G3,'Human','Turkey') == D_sars.loc['Human','Turkey']
 
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!

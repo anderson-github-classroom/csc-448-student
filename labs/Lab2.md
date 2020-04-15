@@ -406,12 +406,10 @@ G2 = additive_phylogeny(D,len(D)+1)
 show(G2)
 ```
 
-```python
-D
-```
-
 <!-- #region slideshow={"slide_type": "subslide"} -->
-**Exercise 4 (not for points)** Run your new algorithm on SARS data derived from multiple alignment of Spike proteins.
+**Exercise 4 (extra credit)** Run your new algorithm on SARS data derived from multiple alignment of Spike proteins.
+
+This will show up on the grader as incorrect, but I will make it extra credit when moving the grades into Canvas.
 <!-- #endregion -->
 
 ```python slideshow={"slide_type": "subslide"}
@@ -431,11 +429,14 @@ show(G3)
 show_adj(G3)
 ```
 
-```python
+<!-- #region slideshow={"slide_type": "skip"} -->
+**Helper function to check things out**
+<!-- #endregion -->
+
+```python slideshow={"slide_type": "skip"}
 def compute_path_cost(T,i,k):
     cost = 0
     path = list(nx.all_simple_paths(T,i,k))[0]
-    print(path)
     a = path[0]
     cost = 0
     A = show_adj(G3)
@@ -445,8 +446,12 @@ def compute_path_cost(T,i,k):
     return cost
 ```
 
-```python
+```python slideshow={"slide_type": "skip"}
 compute_path_cost(G3,'Human','Turkey')
+```
+
+```python slideshow={"slide_type": "fragment"}
+compute_path_cost(G3,'Human','Turkey') == D_sars.loc['Human','Turkey']
 ```
 
 ```python slideshow={"slide_type": "skip"}
