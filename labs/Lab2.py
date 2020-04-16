@@ -321,7 +321,7 @@ Dtrimmed = D.drop(n).drop(n,axis=1)
 for j in Dtrimmed.index:
     D.loc[j,n] = D.loc[j,n] - limbLength
     D.loc[n,j] = D.loc[j,n]
-find(D,"v4")
+find(D,n)
 
 
 # -

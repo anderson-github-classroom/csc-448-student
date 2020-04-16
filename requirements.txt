@@ -5,3 +5,4 @@ pytest
 joblib
 networkx
 scipy
+wget
