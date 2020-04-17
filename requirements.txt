@@ -6,4 +6,5 @@ joblib
 networkx
 scipy
 setuptools
+wheel
 wget
