@@ -14,6 +14,19 @@ print("Keys",answers.keys())
 import numpy as np
 import networkx as nx
 
+def cycles_equal(cycle1,cycle2):
+    assert len(cycle1) == len(cycle2)
+    assert cycle1[0] == cycle1[-1]
+    assert cycle2[0] == cycle2[-1]
+    if np.all(cycle1==cycle2):
+        return True
+    for i in range(len(cycle2)):
+        cycle1 = [cycle1[-2]] + cycle1[0:-2] + [cycle1[-2]]
+        print(cycle1,cycle2)
+        if np.all(np.array(cycle1)==np.array(cycle2)):
+            return True
+    return False
+
 def test_exercise_1():
     assert tuple(Lab3.composition(3,"TATGGGGTGC")) == answers['answer_exercise_1']
 
@@ -21,7 +34,7 @@ def test_exercise_2():
     assert np.all(nx.adjacency_matrix(Lab3.de_bruijn(["AAT","ATG","ATG","ATG","CAT","CCA","GAT","GCC","GGA","GGG","GTT","TAA","TGC","TGG","TGT"])) == answers['answer_exercise_2'])
 
 def test_exercise_3():
-    assert tuple(Lab3.eulerian_cycle(Lab3.G,start=6)) == answers['answer_exercise_3']
+    assert cycles_equal(Lab3.eulerian_cycle(Lab3.G,start=6),answers['answer_exercise_3'])
 
 def test_exercise_4():
     assert tuple(Lab3.eulerian_path(Lab3.G2)) == answers['answer_exercise_4']
