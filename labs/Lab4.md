@@ -536,7 +536,7 @@ print(s2_aligned)
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-<img src="https://lh3.googleusercontent.com/proxy/L4RUPP8llSmX4BQTP1AuS67ZhJb2tehi3ufPAYXb3-buRAgkSuXlkwrV9Lc8-fzJbaqjmv0MpItcgho">
+<img src="https://lh3.googleusercontent.com/proxy/L4RUPP8llSmX4BQTP1AuS67ZhJb2tehi3ufPAYXb3-buRAgkSuXlkwrV9Lc8-fzJbaqjmv0MpItcgho" width=500>
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->

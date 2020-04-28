@@ -492,7 +492,7 @@ print(s1_aligned)
 print(s2_aligned)
 
 # + [markdown] slideshow={"slide_type": "subslide"}
-# <img src="https://lh3.googleusercontent.com/proxy/L4RUPP8llSmX4BQTP1AuS67ZhJb2tehi3ufPAYXb3-buRAgkSuXlkwrV9Lc8-fzJbaqjmv0MpItcgho">
+# <img src="https://lh3.googleusercontent.com/proxy/L4RUPP8llSmX4BQTP1AuS67ZhJb2tehi3ufPAYXb3-buRAgkSuXlkwrV9Lc8-fzJbaqjmv0MpItcgho" width=500>
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/BLOSUM62.png/400px-BLOSUM62.png" width=800>
