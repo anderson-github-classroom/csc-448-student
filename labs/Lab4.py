@@ -53,9 +53,12 @@
 # * However, given two sequences corresponding to two genes, can be said that there are different levels of similarity based on an alignment between them. 
 # * Our key question is to determine whether a good alignment between two sequences is significant enough to consider that both genes are homologous. 
 #     * This task is done through a hypothesis testing and the corresponding p-values are used to make a decision.
-# * Two different forms of homology. 
-#     * Paralogs - When the origin of two homologous genes is due to a process of gene duplication within the same species
-#     * Orthologous genes - origin is due to a speciation process resulting in homologous genes in these different species
+
+# + [markdown] slideshow={"slide_type": "subslide"}
+# ## Two different forms of homology. 
+# Paralogs - When the origin of two homologous genes is due to a process of gene duplication within the same species
+#
+# Orthologous genes - origin is due to a speciation process resulting in homologous genes in these different species
 
 # + [markdown] slideshow={"slide_type": "slide"}
 # # Introduction to Sequence Alignment
@@ -104,6 +107,7 @@ def random_action(s1,s2):
 def greedy_lcs(s1,s2,seed=0):
     random.seed(seed)
     lcs = ""
+    # YOUR SOLUTION HERE
     return lcs
 
 
@@ -118,7 +122,7 @@ print(greedy_lcs("AACCTTGG","ACACTGTGA",seed=2000))
 #
 # **Exercise 2** Modify your solution to exercise 1 to return the alignment as two strings with "-" characters when there is a indel. Do not modify ``random_action`` as that is what the autograder is going to rely on you using. HINT: Just keep track of the strings before calling ``random_action``.
 
-# + slideshow={"slide_type": "fragment"}
+# + slideshow={"slide_type": "subslide"}
 def greedy_alignment(s1,s2,seed=0):
     random.seed(seed)
     s1_new = ""
@@ -157,7 +161,14 @@ print(greedy_alignment("AACCTTGG","ACACTGTGA",seed=2000))
 #
 # This illustrates a nice recurrence relation for us:
 # $$
-# \mbox{MinNumCoins}(money) = min\left( \left\{\mbox{MinNumCoins}(money-coin_1) + 1,...,\mbox{MinNumCoins}(money-coin_d)+1\right\} \right)
+# \mbox{MinNumCoins}(money) = min
+# \left\{
+#     \begin{array}{l}
+#       \mbox{MinNumCoins}(money-coin_1) + 1\\
+#       \mbox{...}\\
+#       \mbox{MinNumCoins}(money-coin_d)+1
+#     \end{array}
+#   \right\}
 # $$
 
 # + [markdown] slideshow={"slide_type": "subslide"}
@@ -480,8 +491,11 @@ print(score)
 print(s1_aligned)
 print(s2_aligned)
 
+# + [markdown] slideshow={"slide_type": "subslide"}
+# <img src="https://lh3.googleusercontent.com/proxy/L4RUPP8llSmX4BQTP1AuS67ZhJb2tehi3ufPAYXb3-buRAgkSuXlkwrV9Lc8-fzJbaqjmv0MpItcgho">
+
+# + [markdown] slideshow={"slide_type": "subslide"}
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/BLOSUM62.png/400px-BLOSUM62.png" width=800>
+
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!
-# -
-
-
