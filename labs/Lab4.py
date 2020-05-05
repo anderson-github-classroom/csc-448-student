@@ -288,7 +288,6 @@ choices_df = pd.DataFrame({"remainder(s1)":[s1[1:],s1[1:],s1],
               "score(s1_part,s2_part)":[int(s1[0]==s2[0]),0,0]})
 choices_df
 
-
 # + [markdown] slideshow={"slide_type": "subslide"}
 # Now we can write our recurrance relationship for our specific example:
 #
@@ -324,6 +323,8 @@ choices_df
 # Suggestion: If you are struggling with the recursive solution, then proceed to the dynamic programming one and come back to this.
 
 # + slideshow={"slide_type": "fragment"}
+import pandas as pd
+import numpy as np
 def align(s1,s2):
     # Below are the exact base cases that I want you to use
     if len(s1) == 0:
@@ -499,3 +500,6 @@ print(s2_aligned)
 
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!
+# -
+
+

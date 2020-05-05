@@ -360,6 +360,8 @@ Suggestion: If you are struggling with the recursive solution, then proceed to t
 <!-- #endregion -->
 
 ```python slideshow={"slide_type": "fragment"}
+import pandas as pd
+import numpy as np
 def align(s1,s2):
     # Below are the exact base cases that I want you to use
     if len(s1) == 0:
@@ -545,4 +547,8 @@ print(s2_aligned)
 
 ```python slideshow={"slide_type": "skip"}
 # Don't forget to push!
+```
+
+```python
+
 ```
