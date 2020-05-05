@@ -277,7 +277,7 @@ emission
 ```python slideshow={"slide_type": "subslide"}
 pi = "IIIINNNNNNNNNNNNNNNNNIIII"
 sigma = emission.columns
-transition = pd.DataFrame([[0.0001,1-0.0001],[1-0.001,0.001],[0.0001,1-0.0001]],index=["start"]+states,columns=states)
+transition = pd.DataFrame([[0.0001,1-0.0001],[1-0.1,0.1],[0.0001,1-0.0001]],index=["start"]+states,columns=states)
 transition
 ```
 
@@ -436,7 +436,7 @@ for f in locations:
         file = f
         break
 print('Opening',file)
-sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:100000]
+sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:10000]
 print(sequence[:10],"...",sequence[-10:])
 print(len(sequence))
 ```
@@ -446,6 +446,10 @@ print(len(sequence))
 Given: A string $x$, followed by an HMM.
 
 Return: A path that maximizes the probability Pr(x, $\pi$) over all possible paths $\pi$.
+
+```python
+CG_island_hmm
+```
 
 ```python
 x = [sequence[i:i+2] for i in range(0,len(sequence)-1,2)]
