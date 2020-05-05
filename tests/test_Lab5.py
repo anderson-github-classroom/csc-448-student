@@ -28,5 +28,5 @@ def test_exercise_3():
 
 def test_exercise_4():
     x = "HHHHHHTTTTTT"
-    answer = likelihood_x(x,Lab5.coin_hmm2,debug=debug)
+    answer = Lab5.likelihood_x(x,Lab5.coin_hmm2,debug=debug)
     assert answer == answers['answer_exercise_4']

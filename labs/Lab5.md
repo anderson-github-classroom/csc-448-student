@@ -212,10 +212,11 @@ But we are used to dealing with things a more complicated in computer science th
 
 ```python slideshow={"slide_type": "fragment"}
 df=pd.DataFrame([[1,2,3],[4,5,6]],index=["One","Two"],columns=["A","B","C"])
-display(df.loc["One"])
-display(df.loc["Two","B"])
-display(df.iloc[0,:])
-display(df.iloc[1,2])
+if debug:
+    display(df.loc["One"])
+    display(df.loc["Two","B"])
+    display(df.iloc[0,:])
+    display(df.iloc[1,2])
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->

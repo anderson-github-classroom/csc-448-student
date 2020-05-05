@@ -187,10 +187,11 @@ arry.tolist()
 
 # + slideshow={"slide_type": "fragment"}
 df=pd.DataFrame([[1,2,3],[4,5,6]],index=["One","Two"],columns=["A","B","C"])
-display(df.loc["One"])
-display(df.loc["Two","B"])
-display(df.iloc[0,:])
-display(df.iloc[1,2])
+if debug:
+    display(df.loc["One"])
+    display(df.loc["Two","B"])
+    display(df.iloc[0,:])
+    display(df.iloc[1,2])
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # ## Our CG-island HMM
