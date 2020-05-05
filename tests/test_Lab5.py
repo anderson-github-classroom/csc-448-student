@@ -13,7 +13,7 @@ print("Keys",answers.keys())
 
 def test_exercise_1():
     pi = "FFFFBBBBFBFBBB"
-    answer = prob_path(pi,Lab5.coin_hmm)
+    answer = Lab5.prob_path(pi,Lab5.coin_hmm)
     assert answer == answers['answer_exercise_1']
 
 def test_exercise_2():
