@@ -249,7 +249,7 @@ emission
 # + slideshow={"slide_type": "subslide"}
 pi = "IIIINNNNNNNNNNNNNNNNNIIII"
 sigma = emission.columns
-transition = pd.DataFrame([[0.0001,1-0.0001],[1-0.001,0.001],[0.0001,1-0.0001]],index=["start"]+states,columns=states)
+transition = pd.DataFrame([[0.0001,1-0.0001],[1-0.1,0.1],[0.05,1-0.05]],index=["start"]+states,columns=states)
 transition
 
 # + slideshow={"slide_type": "subslide"}
@@ -323,15 +323,19 @@ prob_outcome_path(x,pi,coin_hmm)
 
 # + slideshow={"slide_type": "subslide"}
 import numpy as np
+from numpy import log
 
-def decode_path(x,hmm,debug=False):
+def decode_path(x,hmm,debug=False,use_log=False):
     sigma,states,transition,emission=hmm
     if type(x) == str:
         x = [c for c in x] # needed for pandas stuff
     path_probs = pd.DataFrame(np.zeros((len(states),len(x))),columns=x,index=states)
     previous_states = pd.DataFrame("?",columns=x,index=states)
     for i in range(path_probs.shape[0]): # Get the number of rows
-        path_probs.iloc[i,0] = transition.loc["start",path_probs.index[i]]*emission.loc[path_probs.index[i],x[0]]
+        if use_log:
+            path_probs.iloc[i,0] = log(transition.loc["start",path_probs.index[i]])+log(emission.loc[path_probs.index[i],x[0]])
+        else:
+            path_probs.iloc[i,0] = transition.loc["start",path_probs.index[i]]*emission.loc[path_probs.index[i],x[0]]
         previous_states.iloc[i,0] = path_probs.index[i]
     if debug:
         display(path_probs)
@@ -352,13 +356,11 @@ emission = pd.DataFrame([[0.5,0.5],[0.75,0.25]],index=states,columns=sigma)
 
 coin_hmm2 = (sigma,states,transition,emission) # transition if different because I've added a start state we need
 
-
 pi = decode_path(x,coin_hmm2,debug=debug)
 pi
 
 
-# -
-
+# + [markdown] slideshow={"slide_type": "subslide"}
 # **Exercise 4**: Likelihood problem
 #
 # Given: A string $x$, followed by an HMM.
@@ -385,11 +387,11 @@ prob = likelihood_x(x,coin_hmm2,debug=debug)
 
 
 prob
-# -
+# + [markdown] slideshow={"slide_type": "slide"}
 # ## What about our CG-islands?
 # Let's read a snipit and the human genome.
 
-# +
+# + slideshow={"slide_type": "subslide"}
 import os.path
 
 file = None
@@ -399,23 +401,25 @@ for f in locations:
         file = f
         break
 print('Opening',file)
-sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:100000]
+sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:1000]
 print(sequence[:10],"...",sequence[-10:])
 print(len(sequence))
-# -
 
+# + [markdown] slideshow={"slide_type": "subslide"}
 # **Exercise 5 (for fun - please comment out before submitting to the autograder)**: Find the CG-islands
 #
 # Given: A string $x$, followed by an HMM.
 #
 # Return: A path that maximizes the probability Pr(x, $\pi$) over all possible paths $\pi$.
 
-# +
+# + slideshow={"slide_type": "subslide"}
 x = [sequence[i:i+2] for i in range(0,len(sequence)-1)]
-pi = decode_path(x,CG_island_hmm)
+pi_discard = decode_path(x,CG_island_hmm,debug=True,use_log=False)
 
-# -
+pi = decode_path(x,CG_island_hmm,debug=True,use_log=True)
 
+
+# + slideshow={"slide_type": "subslide"}
 sections = []
 for i in range(len(pi)):
     if len(sections) == 0:
@@ -428,6 +432,7 @@ for i in range(len(pi)):
 prettypi = " ".join(["%d%s"%(len(section),section[0]) for section in sections])
 prettypi
 
+# + [markdown] slideshow={"slide_type": "slide"}
 # ## Profile HMMs and Training
 # * Profile HMMs for Sequence Alignment
 #    * Separate HMM for each family
@@ -439,6 +444,3 @@ prettypi
 
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!
-# -
-
-
