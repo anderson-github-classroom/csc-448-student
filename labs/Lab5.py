@@ -418,6 +418,7 @@ pi_discard = decode_path(x,CG_island_hmm,debug=True,use_log=False)
 
 pi = decode_path(x,CG_island_hmm,debug=True,use_log=True)
 
+len(pi)
 
 # + slideshow={"slide_type": "subslide"}
 sections = []
