@@ -22,11 +22,11 @@ def test_exercise_2():
     assert Lab5.prob_outcome_path(x,pi,Lab5.coin_hmm) == answers['answer_exercise_2']
 
 def test_exercise_3():
-    x = "HHHHHHTTTTTT"
+    x = "HTHTHTHTHHHHHHHTTTTTT"
     answer = Lab5.decode_path(x,Lab5.coin_hmm2)
     assert answer == answers['answer_exercise_3']
 
 def test_exercise_4():
-    x = "HHHHHHTTTTTT"
+    x = "HTHTHTHTHHHHHHHTTTTTT"
     answer = Lab5.likelihood_x(x,Lab5.coin_hmm2)
     assert answer == answers['answer_exercise_4']

@@ -249,7 +249,7 @@ emission
 # + slideshow={"slide_type": "subslide"}
 pi = "IIIINNNNNNNNNNNNNNNNNIIII"
 sigma = emission.columns
-transition = pd.DataFrame([[0.0001,1-0.0001],[1-0.1,0.1],[0.0001,1-0.0001]],index=["start"]+states,columns=states)
+transition = pd.DataFrame([[0.0001,1-0.0001],[1-0.001,0.001],[0.0001,1-0.0001]],index=["start"]+states,columns=states)
 transition
 
 # + slideshow={"slide_type": "subslide"}
@@ -343,7 +343,7 @@ def decode_path(x,hmm,debug=False):
 
 
 # + slideshow={"slide_type": "subslide"}
-x = "HHHHHHTTTTTT"
+x = "HTHTHTHTHHHHHHHTTTTTT"
 sigma = ["H","T"]
 states = ["F","B"]
 transition = pd.DataFrame([[0.5,0.5],[0.65,0.35],[0.35,0.65]],index=["start"]+states,columns=states)
@@ -380,7 +380,7 @@ def likelihood_x(x,hmm,debug=False):
 
 
 # + slideshow={"slide_type": "subslide"}
-x = "HHHHHHTTTTTT"
+x = "HTHTHTHTHHHHHHHTTTTTT"
 prob = likelihood_x(x,coin_hmm2,debug=debug)
 
 
@@ -399,7 +399,7 @@ for f in locations:
         file = f
         break
 print('Opening',file)
-sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:10000]
+sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:100000]
 print(sequence[:10],"...",sequence[-10:])
 print(len(sequence))
 # -
@@ -410,14 +410,32 @@ print(len(sequence))
 #
 # Return: A path that maximizes the probability Pr(x, $\pi$) over all possible paths $\pi$.
 
-CG_island_hmm
-
 # +
-x = [sequence[i:i+2] for i in range(0,len(sequence)-1,2)]
+x = [sequence[i:i+2] for i in range(0,len(sequence)-1)]
 pi = decode_path(x,CG_island_hmm)
 
+# -
 
-pi
+sections = []
+for i in range(len(pi)):
+    if len(sections) == 0:
+        sections.append([pi[i]])
+    else:
+        if sections[-1][0] == pi[i]:
+            sections[-1].append(pi[i])
+        else:
+            sections.append([pi[i]])
+prettypi = " ".join(["%d%s"%(len(section),section[0]) for section in sections])
+prettypi
+
+# ## Profile HMMs and Training
+# * Profile HMMs for Sequence Alignment
+#    * Separate HMM for each family
+#    * Seeded with multiple sequence alignment
+#    * Trained on a lot of sequences from the same family
+#    * We can then ask what is the family of a sequence (with unknown family) by checking it against each HMM!
+# * Training
+#    * Learning the correct transition and emission rates are not beyond our understanding, but in the interest of time I've left them out of this online version of this class. The book has a good section on this material.
 
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!
