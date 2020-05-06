@@ -401,7 +401,7 @@ for f in locations:
         file = f
         break
 print('Opening',file)
-sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:1000]
+sequence = ("".join(open(file).read().upper().split("\n")[1:])).strip()[:10000]
 print(sequence[:10],"...",sequence[-10:])
 print(len(sequence))
 
