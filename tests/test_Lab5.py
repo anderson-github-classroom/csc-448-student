@@ -22,7 +22,7 @@ def test_exercise_1():
 def test_exercise_2():
     x = "HHHHTTHTTTHHHH"
     pi = "FFFFBBBBFBFBBB"
-    assert Lab5.prob_outcome_path(x,pi,Lab5.coin_hmm) == answers['answer_exercise_2']
+    assert np.abs(Lab5.prob_outcome_path(x,pi,Lab5.coin_hmm) - answers['answer_exercise_2']) <= answer_tol
 
 def test_exercise_3():
     x = "HTHTHTHTHHHHHHHTTTTTT"
