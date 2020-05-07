@@ -391,7 +391,8 @@ x = "HTHTHTHTHHHHHHHTTTTTT"
 sigma = ["H","T"]
 states = ["F","B"]
 transition = pd.DataFrame([[0.5,0.5],[0.65,0.35],[0.35,0.65]],index=["start"]+states,columns=states)
-display(transition)
+if debug:
+    display(transition)
 emission = pd.DataFrame([[0.5,0.5],[0.75,0.25]],index=states,columns=sigma)
 
 coin_hmm2 = (sigma,states,transition,emission) # transition if different because I've added a start state we need
