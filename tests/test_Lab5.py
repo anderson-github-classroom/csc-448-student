@@ -11,10 +11,13 @@ import joblib
 answers = joblib.load(str(DIR)+"/answers_Lab5.joblib")
 print("Keys",answers.keys())
 
+import numpy as np
+answer_tol = 1e-10
+
 def test_exercise_1():
     pi = "FFFFBBBBFBFBBB"
     answer = Lab5.prob_path(pi,Lab5.coin_hmm)
-    assert answer == answers['answer_exercise_1']
+    assert np.abs(answer - answers['answer_exercise_1']) <= answer_tol
 
 def test_exercise_2():
     x = "HHHHTTHTTTHHHH"
@@ -29,4 +32,4 @@ def test_exercise_3():
 def test_exercise_4():
     x = "HTHTHTHTHHHHHHHTTTTTT"
     answer = Lab5.likelihood_x(x,Lab5.coin_hmm2)
-    assert answer == answers['answer_exercise_4']
+    assert np.abs(answer - answers['answer_exercise_4']) <= answer_tol
