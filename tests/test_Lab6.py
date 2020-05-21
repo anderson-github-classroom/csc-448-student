@@ -31,5 +31,8 @@ def test_exercise_4():
     assert np.all(Lab6.to_adj(answer).values == answers['answer_exercise_4'].values)
     
 def test_exercise_5():
-    answer = Lab6.suffix_tree_construction("panamabananas$")
-    assert np.all(Lab6.to_adj(answer).values == answers['answer_exercise_5'].values)
+    answer = Lab6.to_adj(Lab6.suffix_tree_construction("panamabananas$"))
+    instructor_answer = answers['answer_exercise_5']
+    answer_order = list(instructor_answer.index)
+    answer = answer.loc[answer_order,answer_order]
+    assert np.all(answer.values == instructor_answer.values)
