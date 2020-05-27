@@ -17,7 +17,7 @@ answer_tol = 1e-10
 def test_exercise_1():
     num_blocks = len(Lab8.lens)
     assert num_blocks == answers['exercise_1_num_blocks']
-    lower = np.all(Lab8.counts > answers['exercise_1_means'] - 3*answers['exercise_1_stds'])
+    lower = np.all(Lab8.counts > answers['exercise_1_means'] - 3*answers['exercise_1_stdevs'])
     assert lower
-    upper = np.all(Lab8.counts < answers['exercise_1_means'] + 3*answers['exercise_1_stds'])
+    upper = np.all(Lab8.counts < answers['exercise_1_means'] + 3*answers['exercise_1_stdevs'])
     assert upper
