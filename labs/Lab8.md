@@ -151,6 +151,7 @@ Output: $d_{rev}(P)$ - number of reversals
 
 ```python slideshow={"slide_type": "subslide"}
 def greedy_sorting(P):
+    P = P.copy()
     approx_rev_distance = 0
     # YOUR SOLUTION HERE
     return approx_rev_distance
@@ -454,9 +455,9 @@ def red_blue_cycle_check(sub_graph,cycle):
 
 G_P4_P5 = combine(genome_to_graph([P4]),genome_to_graph([P5]))
 # Below is an example for how you can find all the cycles
-cycles = list(nx.simple_cycles(G_P4_P5.to_directed()))
+test_cycles = list(nx.simple_cycles(G_P4_P5.to_directed()))
 edge_cycles = [] # just a cycle listed as edges
-for cycle in cycles:
+for cycle in test_cycles:
     edge_cycle = []
     a = cycle[0]
     for b in cycle[1:]:
