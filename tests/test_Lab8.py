@@ -21,3 +21,7 @@ def test_exercise_1():
     assert lower
     upper = np.all(Lab8.counts < answers['exercise_1_means'] + 3*answers['exercise_1_stdevs'])
     assert upper
+
+def test_exercise_2():
+    answer = Lab8.greedy_sorting(Lab8.P)
+    assert answers["exercise_2"] == answer
