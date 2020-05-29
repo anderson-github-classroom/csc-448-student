@@ -3,5 +3,5 @@ matplotlib
 pandas
 pytest
 joblib
-networkx==2.2
+networkx
 scipy
