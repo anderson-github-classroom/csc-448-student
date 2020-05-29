@@ -392,7 +392,7 @@ distance
 import matplotlib.pyplot as plt
 
 def print_from_graph(G):
-    sub_graphs = nx.connected_component_subgraphs(G)
+    sub_graphs = [G.subgraph(c).copy() for c in nx.connected_components(G)] #nx.connected_component_subgraphs(Gcombined)
     all_to_print = []
     for sub_graph in sub_graphs:   
         if len(list(sub_graph.nodes())) == 2:
