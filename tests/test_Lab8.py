@@ -49,7 +49,12 @@ def test_exercise_4():
     
 def test_exercise_5():
     G = Lab8.genome_to_graph([pd.Series([1,-2,-3,4]),pd.Series([5,6,7,8,9,10])])
-    assert set(answers['exercise4_edge_list']) == set(Lab8.to_edge_list(G))
+    edge_list = Lab8.to_edge_list(G)
+    for i in range(len(edge_list)):
+        edge_list[i] = tuple(np.sort(edge_list[i]))
+    for i in range(len(answers['exercise4_edge_list'])):
+        answers['exercise4_edge_list'][i] = tuple(np.sort(answers['exercise4_edge_list'][i]))
+    assert set(answers['exercise4_edge_list']) == set(edge_list)
 
 def test_exercise_6():
     P4_list = [1,-2,-3,4]
