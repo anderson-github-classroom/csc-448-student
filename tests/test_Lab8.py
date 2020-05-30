@@ -47,13 +47,15 @@ def test_exercise_4():
     assert answers["exercise_3_nbreakpoints_P2"] == nbreakpoints_P2
     assert answers["exercise_3_nbreakpoints_P3"] == nbreakpoints_P3
     
-def test_exercise_5():
-    G = Lab8.genome_to_graph([pd.Series([1,-2,-3,4]),pd.Series([5,6,7,8,9,10])])
-    edge_list = Lab8.to_edge_list(G)
+def fix_edge_list(edge_list):
     for i in range(len(edge_list)):
         edge_list[i] = tuple(np.sort(edge_list[i]))
-    for i in range(len(answers['exercise4_edge_list'])):
-        answers['exercise4_edge_list'][i] = tuple(np.sort(answers['exercise4_edge_list'][i]))
+    return edge_list
+    
+def test_exercise_5():
+    G = Lab8.genome_to_graph([pd.Series([1,-2,-3,4]),pd.Series([5,6,7,8,9,10])])
+    edge_list = fix_edge_list(Lab8.to_edge_list(G))
+    answers['exercise4_edge_list'] = fix_edge_list(answers['exercise4_edge_list'])
     assert set(answers['exercise4_edge_list']) == set(edge_list)
 
 def test_exercise_6():
@@ -63,7 +65,9 @@ def test_exercise_6():
     P5 = pd.Series(P5_list)
 
     G_P4_P5 = Lab8.combine(Lab8.genome_to_graph([P4]),Lab8.genome_to_graph([P5]))
-    assert answers['exercise5_edge_list'] == Lab8.to_edge_list(G_P4_P5)
+    answers['exercise5_edge_list'] = fix_edge_list(answers['exercise5_edge_list'])
+    edge_list = fix_edge_list(Lab8.to_edge_list(G_P4_P5))    
+    assert set(answers['exercise5_edge_list']) == set(edge_list)
 
 def test_exercise_7():
     P4_list = [1,-2,-3,4]
