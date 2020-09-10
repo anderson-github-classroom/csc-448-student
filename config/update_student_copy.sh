@@ -1,10 +1,11 @@
 FOLDER=csc-448-student
 rm -rf ../$FOLDER/*
 cp requirements.txt ../$FOLDER/
-cp deadlines.ipynb ../$FOLDER/
+cp install.sh ../$FOLDER/
 cp -Rp data ../$FOLDER/
 cp -Rp book ../$FOLDER/
 cp -Rp labs ../$FOLDER/
+cp -Rp src ../$FOLDER/
 cp -Rp assignments ../$FOLDER/
 cp -Rp groups ../$FOLDER/
 cp -Rp tests ../$FOLDER/
