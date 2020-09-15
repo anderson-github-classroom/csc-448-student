@@ -13,7 +13,7 @@ jupyter:
     name: python3
 ---
 
-<!-- #region slideshow={"slide_type": "slide"} hideCode=false hidePrompt=false -->
+<!-- #region slideshow={"slide_type": "slide"} hideCode=true hidePrompt=true -->
 # Name(s)
 Your name here
 <!-- #endregion -->
@@ -31,7 +31,13 @@ I am providing the autograder answers locally so you may test your code before p
 # DO NOT EDIT
 #########################
 
-exec(open('../src/header.py').read())
+import os
+if os.path.isdir('../src/'):
+    src_dir = '../src/'
+elif os.path.isdir('../csc-448-student/'):
+    src_dir = '../csc-448-student/src/'
+    
+exec(open('%s/header.py'%src_dir).read()) # instructor repo
 ```
 
 <!-- #region slideshow={"slide_type": "slide"} hideCode=true hidePrompt=true -->

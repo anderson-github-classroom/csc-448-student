@@ -13,7 +13,7 @@
 #     name: python3
 # ---
 
-# + [markdown] slideshow={"slide_type": "slide"} hideCode=false hidePrompt=false
+# + [markdown] slideshow={"slide_type": "slide"} hideCode=true hidePrompt=true
 # # Name(s)
 # Your name here
 
@@ -28,7 +28,13 @@
 # DO NOT EDIT
 #########################
 
-exec(open('../src/header.py').read())
+import os
+if os.path.isdir('../src/'):
+    src_dir = '../src/'
+elif os.path.isdir('../csc-448-student/'):
+    src_dir = '../csc-448-student/src/'
+    
+exec(open('%s/header.py'%src_dir).read()) # instructor repo
 
 # + [markdown] slideshow={"slide_type": "slide"} hideCode=true hidePrompt=true
 # ## Questions
