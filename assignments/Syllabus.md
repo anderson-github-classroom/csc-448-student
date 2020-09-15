@@ -86,7 +86,7 @@ widgets.Box(
 manual_answers["question_3"] = widgets.RadioButtons(
             options=[
                 'Yes. The exact times are scheduled for each student, but Friday is always synchronous',
-                'Yes. The exact times are schedule for each student including Friday.',
+                'Yes. The exact times are scheduled for each student including Friday.',
                 'No.'
             ],
             layout={'width': 'max-content'},
