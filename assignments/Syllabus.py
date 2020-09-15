@@ -17,23 +17,23 @@
 # # Name(s)
 # Your name here
 
-# + [markdown] slideshow={"slide_type": "subslide"} hideCode=false hidePrompt=false
+# + [markdown] slideshow={"slide_type": "subslide"} hideCode=true hidePrompt=true
 # **Instructions:** This is an individual assignment. Complete the following code and push to officially get your score.
 
-# + [markdown] slideshow={"slide_type": "subslide"} hideCode=false hidePrompt=false
+# + [markdown] slideshow={"slide_type": "subslide"} hideCode=true hidePrompt=true
 # I am providing the autograder answers locally so you may test your code before pushing. I will be reviewing your submissions, and if I find you are circumventing the autograder in any manner, you will receive a 0 on this assignment and your case will be reported to the honor board for review. i.e., approach the assignment in a genuine manner and you have nothing to worry about.
 
-# +
+# + hideCode=true hidePrompt=true
 #########################
 # DO NOT EDIT
 #########################
 
 exec(open('../src/header.py').read())
 
-# + [markdown] slideshow={"slide_type": "slide"} hideCode=false hidePrompt=false
+# + [markdown] slideshow={"slide_type": "slide"} hideCode=true hidePrompt=true
 # ## Questions
 
-# + hideCode=false slideshow={"slide_type": "subslide"} hidePrompt=false
+# + hideCode=true slideshow={"slide_type": "subslide"} hidePrompt=true
 manual_answers["question_1"] = widgets.RadioButtons(
             options=[
                 'Monday morning',
@@ -51,7 +51,7 @@ widgets.Box(
     ]
 )
 
-# + tags=["hide-input"] hideCode=false slideshow={"slide_type": "subslide"} hidePrompt=false
+# + tags=["hide-input"] hideCode=true slideshow={"slide_type": "subslide"} hidePrompt=true
 manual_answers["question_2"] = widgets.RadioButtons(
             options=[
                 'Yes',
@@ -69,7 +69,7 @@ widgets.Box(
     ]
 )
 
-# + hideCode=false slideshow={"slide_type": "subslide"} hidePrompt=false
+# + hideCode=true slideshow={"slide_type": "subslide"} hidePrompt=true
 manual_answers["question_3"] = widgets.RadioButtons(
             options=[
                 'Yes. The exact times are scheduled for each student, but Friday is always synchronous',
@@ -87,7 +87,7 @@ widgets.Box(
     ]
 )
 
-# + hideCode=false slideshow={"slide_type": "subslide"} hidePrompt=false
+# + hideCode=true slideshow={"slide_type": "subslide"} hidePrompt=true
 manual_answers["question_4"] = widgets.RadioButtons(
             options=[
                 'Netbeans',
@@ -105,7 +105,7 @@ widgets.Box(
     ]
 )
 
-# + hideCode=false slideshow={"slide_type": "subslide"} hidePrompt=false
+# + hideCode=true slideshow={"slide_type": "subslide"} hidePrompt=true
 manual_answers["question_5"] = widgets.RadioButtons(
             options=[
                 'If you want to get anything higher than a D, you\'ll need to do more than the labs and assignments',
@@ -122,7 +122,7 @@ widgets.Box(
     ]
 )
 
-# + hideCode=false slideshow={"slide_type": "slide"} hidePrompt=false
+# + hideCode=true slideshow={"slide_type": "slide"} hidePrompt=true
 # SUBMISSION INSTRUCTIONS
 print("""
 1. If there are any manual answers in this notebook, scroll to the top and click the button labelled 'Update ...'.
