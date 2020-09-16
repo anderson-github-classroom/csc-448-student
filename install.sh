@@ -10,3 +10,5 @@ pip install hide-code
 jupyter nbextension install --py hide_code
 jupyter nbextension enable --py hide_code
 jupyter serverextension enable --py hide_code
+pip install xlrd
+pip install sklearn
