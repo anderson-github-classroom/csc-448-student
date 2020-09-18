@@ -320,23 +320,26 @@ print(frequent_words("ACAACTATGCATACTATCGGGAACTATCCT",4))
 ```
 
 ```python slideshow={"slide_type": "subslide"} hideCode=false hidePrompt=false
-print('Question 1: What is the Big-O of frequent words? Define |text| as the length of text. Assume the unit of measurement is comparing a single charater (i.e., comparing ABC to DEF costs 3 units).')
-manual_answers["question_1"] = widgets.RadioButtons(
-            options=[
-                '|text|^2',
-                '|text|^2*k',
-                'k^2'
-            ],
-            layout={'width': 'max-content'},
-            value = None
-        )
+try:
+    print('Question 1: What is the Big-O of frequent words? Define |text| as the length of text. Assume the unit of measurement is comparing a single charater (i.e., comparing ABC to DEF costs 3 units).')
+    manual_answers["question_1"] = widgets.RadioButtons(
+                options=[
+                    '|text|^2',
+                    '|text|^2*k',
+                    'k^2'
+                ],
+                layout={'width': 'max-content'},
+                value = None
+            )
 
-widgets.Box(
-    [
-        widgets.Label(value='Answers:'),
-        manual_answers["question_1"]
-    ]
-)
+    display(widgets.Box(
+        [
+            widgets.Label(value='Answers:'),
+            manual_answers["question_1"]
+        ]
+    ))
+except:
+    pass
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} hideCode=false hidePrompt=false -->
