@@ -282,6 +282,7 @@ import numpy as np
 def frequent_words(text,k):
     frequent_patterns = []
     counts = []
+    # YOUR SOLUTION HERE
     return list(np.unique(frequent_patterns)),max_count
 
 
@@ -335,6 +336,7 @@ frequent_words(text,9)
 def reverse_complement(text):
     text = text[::-1].lower()
     chars = []
+    # YOUR SOLUTION HERE
     return "".join(chars)
 
 
@@ -364,6 +366,8 @@ def frequency_table(text,k):
     freq_map = {}
     n = len(text)
     for i in range(n-k+1):
+        # YOUR SOLUTION HERE
+        pass
     return freq_map
 
 
@@ -393,6 +397,7 @@ pd.Series(frequency_table(text,3))
 def better_frequent_words(text,k):
     frequent_patterns = []
     freq_map = frequency_table(text,k)
+    # YOUR SOLUTION HERE
     return frequent_patterns,max_value
 
 
@@ -467,6 +472,7 @@ better_frequent_words(text,9)
 # + slideshow={"slide_type": "fragment"} hideCode=false hidePrompt=false
 def skew(genome):
     skews = [0]
+    # YOUR SOLUTION HERE
     return skews
 
 

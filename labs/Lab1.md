@@ -310,6 +310,7 @@ import numpy as np
 def frequent_words(text,k):
     frequent_patterns = []
     counts = []
+    # YOUR SOLUTION HERE
     return list(np.unique(frequent_patterns)),max_count
 ```
 
@@ -369,6 +370,7 @@ So we can now understand and look for something very important called a reverse 
 def reverse_complement(text):
     text = text[::-1].lower()
     chars = []
+    # YOUR SOLUTION HERE
     return "".join(chars)
 ```
 
@@ -402,6 +404,8 @@ def frequency_table(text,k):
     freq_map = {}
     n = len(text)
     for i in range(n-k+1):
+        # YOUR SOLUTION HERE
+        pass
     return freq_map
 ```
 
@@ -434,6 +438,7 @@ pd.Series(frequency_table(text,3))
 def better_frequent_words(text,k):
     frequent_patterns = []
     freq_map = frequency_table(text,k)
+    # YOUR SOLUTION HERE
     return frequent_patterns,max_value
 ```
 
@@ -516,6 +521,7 @@ Output: An array that computes the $Skew_i(Genome)$. You can assume $Skew_0(Geno
 ```python slideshow={"slide_type": "fragment"} hideCode=false hidePrompt=false
 def skew(genome):
     skews = [0]
+    # YOUR SOLUTION HERE
     return skews
 ```
 
