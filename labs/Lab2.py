@@ -195,6 +195,8 @@ print(greedy_alignment("AACCTTGG","ACACTGTGA",seed=2000))
 # **But how do we find the optimal solution which is by definition the longest common subsequence?** Let's not worry about that for a moment and remind ourselves of dynamic programming and recurrance relations.
 
 # + [markdown] slideshow={"slide_type": "slide"}
+# I'll put you in breakout rooms. Watch this video and then take 5 minutes to come up with a list of questions comments. Share your document in csc448 channel on Slack. I'll ask for 3-5 volunteer groups (or call on folks).
+#
 # <a href="https://calpoly.zoom.us/rec/share/JJuZX1D7bafCY6c07TcoHrcsOU1qA1OZ2MtEsG3qjQafOWvZKPAplPUk0i4m3kZ2.AfbmDJm0Pn2EROgL">Video from Dr. Davidson - Passcode: 7+bK*8Fv</a>
 
 # + [markdown] slideshow={"slide_type": "slide"}
