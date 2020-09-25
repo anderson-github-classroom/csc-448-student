@@ -32,6 +32,8 @@ Project update - I hope everyone is rocking and rolling. Please chime in now if 
 
 Data frames/signatures/etc - you may immediately translate the pandas structures that I uses into your own Python generic data structures. I find this to make the problems harder, but this could make the problems easier for you. It is up to you :) You must satisfy the autograder of course so don't change the input or output types.
 
+Assignments for week
+
 ## Plans
 See headings on slide deck
 
