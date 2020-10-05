@@ -265,7 +265,11 @@ import copy
 from collections import Counter
 
 def to_adj(T):
-    return pd.DataFrame(nx.adjacency_matrix(T).todense(),index=T.nodes(),columns=T.nodes())
+    try:
+        return pd.DataFrame(nx.adjacency_matrix(T).todense(),index=T.nodes(),columns=T.nodes())
+    except:
+        print("Cannot convert to adjacency matrix")
+    return None
 
 def show(T):
     T = copy.deepcopy(T)
@@ -319,6 +323,7 @@ to_adj(dB)
 # + slideshow={"slide_type": "skip"}
 def eulerian_cycle(G,start=None):
     # YOUR SOLUTION HERE
+    cycle = None
     return cycle
     
 G = nx.MultiDiGraph()
