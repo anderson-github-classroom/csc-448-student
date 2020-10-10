@@ -29,6 +29,7 @@ try:
     from IPython.display import Image
 except:
     display_available = False
+    display = print
 try:
     import pygraphviz
     graphviz_installed = True # Set this to False if you don't have graphviz
@@ -275,6 +276,7 @@ def decoding_ideal_spectrum(spectrum,a_mass=a_mass):
         mass_a[mass].append(key)
     G = spectrum_graph_construction(spectrum,mass_a=mass_a)
     # Your solution here
+    matches = []
     return matches
 
 spectrum5 = [57,114,128,215,229,316,330,387,444]
