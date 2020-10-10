@@ -2,7 +2,7 @@ import sys
 sys.path.append(".")
 
 # Import the student solutions
-import Lab7
+import Lab4
 
 import pathlib
 DIR=pathlib.Path(__file__).parent.absolute()
