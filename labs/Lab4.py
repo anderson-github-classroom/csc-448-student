@@ -256,6 +256,11 @@ print(f"Fragments for REDCA")
 print(fragments)
 print(f"Spectrum for REDCA")
 print(spectrum3)
+# -
+
+fragments=[]
+print(ideal_spectrum('GASDGG',fragments=fragments))
+print(fragments)
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # **Exercise 3**: Decoding the ideal spectrum
@@ -263,6 +268,9 @@ print(spectrum3)
 # Input: A ``spectrum``
 #
 # Output: All matching strings representing the peptide that corresponds to a path from *source* to *sink* in Graph(spectrum) whose ideal spectrum is equal to ``spectrum``.
+# -
+
+ideal_spectrum('NTDN')
 
 # + slideshow={"slide_type": "subslide"}
 import numpy as np
@@ -275,6 +283,7 @@ def decoding_ideal_spectrum(spectrum,a_mass=a_mass):
             mass_a[mass] = []
         mass_a[mass].append(key)
     G = spectrum_graph_construction(spectrum,mass_a=mass_a)
+    show(G)
     # Your solution here
     matches = []
     return matches
