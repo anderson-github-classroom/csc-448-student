@@ -123,9 +123,9 @@ except:
 #
 # Each of these questions about SARS is ultimately related to the problem of constructing evolutionary trees (also known as phylogenies). Here is an evolutionary tree for HIV, but what algorithms do we use for this?
 #
-# <img src="http://bioinformaticsalgorithms.com/images/Evolution/HIV_phylogeny.png" width=200>
+# <img src="http://bioinformaticsalgorithms.com/images/Evolution/HIV_phylogeny.png" width=500>
 
-# + [markdown] slideshow={"slide_type": "subslide"}
+# + [markdown] slideshow={"slide_type": "slide"}
 # Our weekly injection of biology from a biologist :)
 #
 # While watching the video in your groups, jot down the answers to the following:
@@ -154,11 +154,11 @@ except:
 # The above example defined a distance matrix of +1 for every mismatched position. In general, $D$ must satisfy three properties. It must be symmetric (for all $i$ and $j$, $D_{i,j}$ = $D_{j,i}$), non-negative (for all $i$ and $j$, $D_{i,j}$ $\ge$ 0) and satisfy the triangle inequality (for all $i$, $j$, and $k$, $D_{i,j} + D_{j,k} \ge D_{i,k}$ ).
 
 # + [markdown] slideshow={"slide_type": "subslide"}
-# <img src="http://bioinformaticsalgorithms.com/images/Evolution/tree_of_life.png" width=400>
+# <img src="http://bioinformaticsalgorithms.com/images/Evolution/tree_of_life.png" width=700>
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # ## Rooted trees
-# <img src="http://bioinformaticsalgorithms.com/images/Evolution/rooted_tree_time.png" width=400>
+# <img src="http://bioinformaticsalgorithms.com/images/Evolution/rooted_tree_time.png" width=700>
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # ## What are we aiming for?

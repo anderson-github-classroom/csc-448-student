@@ -134,10 +134,10 @@ Within weeks bioligists identified a virus that caused the epdemic and sequences
 
 Each of these questions about SARS is ultimately related to the problem of constructing evolutionary trees (also known as phylogenies). Here is an evolutionary tree for HIV, but what algorithms do we use for this?
 
-<img src="http://bioinformaticsalgorithms.com/images/Evolution/HIV_phylogeny.png" width=200>
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/HIV_phylogeny.png" width=500>
 <!-- #endregion -->
 
-<!-- #region slideshow={"slide_type": "subslide"} -->
+<!-- #region slideshow={"slide_type": "slide"} -->
 Our weekly injection of biology from a biologist :)
 
 While watching the video in your groups, jot down the answers to the following:
@@ -169,12 +169,12 @@ The above example defined a distance matrix of +1 for every mismatched position.
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
-<img src="http://bioinformaticsalgorithms.com/images/Evolution/tree_of_life.png" width=400>
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/tree_of_life.png" width=700>
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ## Rooted trees
-<img src="http://bioinformaticsalgorithms.com/images/Evolution/rooted_tree_time.png" width=400>
+<img src="http://bioinformaticsalgorithms.com/images/Evolution/rooted_tree_time.png" width=700>
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
