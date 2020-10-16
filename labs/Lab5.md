@@ -224,6 +224,8 @@ def show(T):
     nx.draw_networkx_edge_labels(T,pos,edge_labels=labels);
     
 def show_adj(T):
+    if len(T.nodes()) == 0:
+        return pd.DataFrame()
     return pd.DataFrame(nx.adjacency_matrix(T).todense(),index=T.nodes(),columns=T.nodes())
 ```
 
@@ -328,6 +330,7 @@ def compute_d(G):
                 # and if you don't write this from scratch, then I will consider this an attempt to
                 # circumvent the autograder
                 #path = list(nx.all_simple_paths(G,nodei,nodej))[0] # get the first simple path
+                path = ["v1","v2"] #remove this when you are ready
                 a = path[0]
                 for b in path[1:]:
                     dij += d[a,b]
@@ -404,6 +407,9 @@ def find(D,n):
     nodes = D.drop(n).index
     for ix,i in enumerate(nodes):
         for kx in range(ix+1,len(nodes)):
+            # Your solution here
+            pass
+    return None,None
 
 D = copy.copy(Dorig)
 print("Starting D")
@@ -505,7 +511,10 @@ show_adj(G3)
 ```python slideshow={"slide_type": "skip"}
 def compute_path_cost(T,i,k):
     cost = 0
-    path = list(nx.all_simple_paths(T,i,k))[0]
+    try:
+        path = list(nx.all_simple_paths(T,i,k))[0]
+    except:
+        return -1
     a = path[0]
     cost = 0
     A = show_adj(G3)
