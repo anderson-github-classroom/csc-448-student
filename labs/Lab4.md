@@ -259,7 +259,9 @@ Output: A list that represents the masses of the ideal spectrum
 
 ```python slideshow={"slide_type": "subslide"}
 # fragments is for debugging purposes
-def ideal_spectrum(peptide,a_mass=a_mass,prefix=True,suffix=True,fragments=[]):
+def ideal_spectrum(peptide,a_mass=a_mass,prefix=True,suffix=True,fragments=None):
+    if fragments is None:
+        fragments = []
     ideal = [0]
     # Your solution here
     ideal.sort()
