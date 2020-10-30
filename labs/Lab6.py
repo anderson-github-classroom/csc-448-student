@@ -402,9 +402,22 @@ def suffix_tree_construction(text):
 
 tree = suffix_tree_construction("panamabananas$")
 show(tree)
+# -
+
+to_adj(tree).index
 
 # + slideshow={"slide_type": "skip"}
 # Don't forget to push!
 # -
+
+
+
+
+
+
+
+
+
+
 
 
