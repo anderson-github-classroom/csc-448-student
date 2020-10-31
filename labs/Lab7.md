@@ -706,10 +706,15 @@ Output: The sequence of genomes resulting from applying a shortest sequence of 2
 def shortest_rearrangement_scenario(P,Q):
     G_P = genome_to_graph(P)
     G_Q = genome_to_graph(Q)
+    distance = two_break_distance(G_P,G_Q)
     Gcombined = combine(G_P,G_Q)
-    plt.figure(0)
+    fig = plt.figure(figsize=(20, 20));
     steps = [print_from_graph(G_P)]
+    c=1
+    plt.subplot(distance+1, 2, c); c+=1
     show_combined(Gcombined,show_grey=False)
+    plt.subplot(distance+1, 2, c); c+=1
+    show(G_P,P_G=Gcombined)
     return steps
         
 steps = shortest_rearrangement_scenario([pd.Series([1,-2,-3,4])],[pd.Series([1,2,-4,-3])])
@@ -722,6 +727,10 @@ steps
 ```python
 
 ```
+
+
+
+
 
 
 
