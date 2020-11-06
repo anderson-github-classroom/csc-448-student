@@ -122,6 +122,7 @@ Take 5 minutes in a breakout room, and then let's come back together.
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
 ### YOUR SOLUTION HERE
+### YOUR SOLUTION HERE
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
@@ -147,6 +148,7 @@ alt.Chart(plot_df).mark_line().encode(
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
+### YOUR SOLUTION HERE
 ### YOUR SOLUTION HERE
 <!-- #endregion -->
 
@@ -203,6 +205,7 @@ df_subset["Cluster"] = clusterer.predict(df_subset.drop(['ORF','Name'],axis=1))
 
 ```python slideshow={"slide_type": "subslide"}
 ### YOUR SOLUTION HERE
+### YOUR SOLUTION HERE
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
@@ -210,6 +213,7 @@ df_subset["Cluster"] = clusterer.predict(df_subset.drop(['ORF','Name'],axis=1))
 <!-- #endregion -->
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
+### YOUR SOLUTION HERE
 ### YOUR SOLUTION HERE
 <!-- #endregion -->
 

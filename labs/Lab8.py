@@ -106,6 +106,7 @@ df.shape
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # ### YOUR SOLUTION HERE
+# ### YOUR SOLUTION HERE
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # ## Sample of genes
@@ -127,6 +128,7 @@ alt.Chart(plot_df).mark_line().encode(
 # **Exercise 3:** What is a good guess on a good ``k`` value?
 
 # + [markdown] slideshow={"slide_type": "subslide"}
+# ### YOUR SOLUTION HERE
 # ### YOUR SOLUTION HERE
 
 # + [markdown] slideshow={"slide_type": "subslide"}
@@ -173,11 +175,13 @@ df_subset["Cluster"] = clusterer.predict(df_subset.drop(['ORF','Name'],axis=1))
 
 # + slideshow={"slide_type": "subslide"}
 ### YOUR SOLUTION HERE
+### YOUR SOLUTION HERE
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # **Exercise 6**: How can you now if you selected the right number of clusters?
 
 # + [markdown] slideshow={"slide_type": "subslide"}
+# ### YOUR SOLUTION HERE
 # ### YOUR SOLUTION HERE
 
 # + slideshow={"slide_type": "subslide"}
