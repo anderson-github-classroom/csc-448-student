@@ -169,6 +169,7 @@ from sklearn.cluster import KMeans
 # + slideshow={"slide_type": "subslide"}
 clusterer = KMeans(n_clusters=3, random_state=10)
 df_subset["Cluster"] = clusterer.predict(df_subset.drop(['ORF','Name'],axis=1))
+df_subset
 
 # + [markdown] slideshow={"slide_type": "subslide"}
 # **Exercise 5:** Plot all of the genes with color according to their cluster. 

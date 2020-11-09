@@ -197,6 +197,7 @@ from sklearn.cluster import KMeans
 ```python slideshow={"slide_type": "subslide"}
 clusterer = KMeans(n_clusters=3, random_state=10)
 df_subset["Cluster"] = clusterer.predict(df_subset.drop(['ORF','Name'],axis=1))
+df_subset
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
