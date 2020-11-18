@@ -688,8 +688,10 @@ print(colors)
 def two_break_on_genome_graph(G,i1,i2,i3,i4,color='red'):
     G.remove_edge(i1,i2)
     G.remove_edge(i3,i4)
-    G.add_edge(i1,i4,color=color)
-    G.add_edge(i2,i3,color=color)
+    if i1 != -i4:
+        G.add_edge(i1,i4,color=color)
+    if i2 != -i3:
+        G.add_edge(i2,i3,color=color)
 ```
 
 <!-- #region slideshow={"slide_type": "subslide"} -->
@@ -712,9 +714,10 @@ def shortest_rearrangement_scenario(P,Q):
     steps = [print_from_graph(G_P)]
     c=1
     plt.subplot(distance+1, 2, c); c+=1
-    show_combined(Gcombined,show_grey=False)
+    show_combined(Gcombined,show_grey=True)
     plt.subplot(distance+1, 2, c); c+=1
     show(G_P,P_G=Gcombined)
+    first = True
     return steps
         
 steps = shortest_rearrangement_scenario([pd.Series([1,-2,-3,4])],[pd.Series([1,2,-4,-3])])
@@ -727,6 +730,12 @@ steps
 ```python
 
 ```
+
+
+
+
+
+
 
 
 
