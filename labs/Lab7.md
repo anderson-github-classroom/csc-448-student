@@ -716,7 +716,7 @@ def shortest_rearrangement_scenario(P,Q):
     plt.subplot(distance+1, 2, c); c+=1
     show_combined(Gcombined,show_grey=True)
     plt.subplot(distance+1, 2, c); c+=1
-    show(G_P,P_G=Gcombined)
+    show(G_P)#,P_G=Gcombined)
     first = True
     return steps
         
@@ -730,6 +730,8 @@ steps
 ```python
 
 ```
+
+
 
 
 
