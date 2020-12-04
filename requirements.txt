@@ -7,3 +7,4 @@ pytest
 joblib
 networkx
 scipy
+ipywidgets
